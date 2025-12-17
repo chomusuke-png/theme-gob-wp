@@ -1,8 +1,4 @@
 <?php
-/**
- * CLACH Theme Functions and Definitions
- */
-
 if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
