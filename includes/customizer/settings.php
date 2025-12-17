@@ -1,0 +1,173 @@
+<?php
+/**
+ * Registro de Opciones del Customizer
+ */
+
+function clach_customize_register($wp_customize)
+{
+    // === 1. SITE IDENTITY & TOP BAR ===
+    $wp_customize->add_section('clach_topbar_section', [
+        'title' => __('Top Bar Settings', 'clach'),
+        'priority' => 20,
+    ]);
+
+    $wp_customize->add_setting('clach_topbar_text', ['default' => 'Centro de Certificación Halal de Chile', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('clach_topbar_text', [
+        'label' => __('Organization Name', 'clach'),
+        'section' => 'clach_topbar_section',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('clach_branding_version', ['default' => 'N.H.L.A. 2021 - 3.0', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('clach_branding_version', [
+        'label' => __('Version Text (Line 1)', 'clach'),
+        'section' => 'title_tagline', 'type' => 'text', 'priority' => 20,
+    ]);
+
+    $wp_customize->add_setting('clach_branding_desc', ['default' => 'Norma Halal Latinoamericana', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('clach_branding_desc', [
+        'label' => __('Description Text (Line 2)', 'clach'),
+        'section' => 'title_tagline', 'type' => 'text', 'priority' => 21,
+    ]);
+
+    // === 2. GLOBAL COLORS ===
+    $wp_customize->add_section('clach_colors_global', ['title' => __('Colors: Base & Global', 'clach'), 'priority' => 30]);
+    
+    $global_colors = [
+        'nhla_blue'    => ['label' => 'Primary Blue (Brand)', 'default' => '#1A428A'],
+        'nhla_green'   => ['label' => 'Primary Green (Brand)', 'default' => '#009B4D'],
+        'nhla_red'     => ['label' => 'Red (Alerts)', 'default' => '#D32F2F'],
+        'bg_body'      => ['label' => 'Body Background', 'default' => '#F5F5F5'],
+        'text_main'    => ['label' => 'Main Text', 'default' => '#333333'],
+        'border_color' => ['label' => 'Border Color', 'default' => '#CCCCCC'],
+    ];
+
+    foreach ($global_colors as $id => $props) {
+        $setting_id = "clach_color_{$id}";
+        $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_hex_color']);
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, ['label' => $props['label'], 'section' => 'clach_colors_global']));
+    }
+
+    // === 3. HEADER COLORS ===
+    $wp_customize->add_section('clach_colors_header', ['title' => __('Colors: Header & Menu', 'clach'), 'priority' => 31]);
+
+    $header_colors = [
+        'header_bg'       => ['label' => 'Header Background', 'default' => '#1A428A'],
+        'nav_link'        => ['label' => 'Menu Link Color', 'default' => '#FFFFFF'],
+        'nav_link_hover'  => ['label' => 'Menu Hover Background', 'default' => 'rgba(255,255,255,0.1)', 'alpha' => true],
+    ];
+
+    foreach ($header_colors as $id => $props) {
+        $setting_id = "clach_header_{$id}";
+        $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_text_field']);
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, ['label' => $props['label'], 'section' => 'clach_colors_header']));
+    }
+
+    // === 4. FOOTER COLORS ===
+    $wp_customize->add_section('clach_colors_footer', ['title' => __('Colors: Footer', 'clach'), 'priority' => 32]);
+
+    $footer_colors = [
+        'footer_bg'         => ['label' => 'Footer Background', 'default' => '#1A428A'],
+        'footer_title'      => ['label' => 'Footer Titles', 'default' => '#FFFFFF'],
+        'footer_text'       => ['label' => 'General Text', 'default' => '#CCCCCC'],
+        'footer_link'       => ['label' => 'Links', 'default' => '#BBBBBB'],
+        'footer_link_hover' => ['label' => 'Links (Hover)', 'default' => '#FFFFFF'],
+        'footer_copy'       => ['label' => 'Copyright Text', 'default' => '#888888'],
+    ];
+
+    foreach ($footer_colors as $id => $props) {
+        $setting_id = "clach_footer_{$id}";
+        $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_hex_color']);
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, ['label' => $props['label'], 'section' => 'clach_colors_footer']));
+    }
+
+    // === 5. HOME WIDGET STYLES ===
+    $wp_customize->add_section('clach_home_widgets_section', [
+        'title' => __('Widgets: Home Page Styles', 'clach'),
+        'priority' => 40,
+        'description' => __('Customize the appearance of widget containers on the home page.', 'clach')
+    ]);
+
+    // Widget Settings
+    $widget_settings = [
+        'bg' => ['default' => '#F5F5F5', 'label' => 'Container Background', 'type' => 'color'],
+        'border' => ['default' => '#CCCCCC', 'label' => 'Container Border Color', 'type' => 'color'],
+        'radius' => ['default' => '4px', 'label' => 'Container Border Radius', 'type' => 'text', 'desc' => 'E.g: 4px, 10px, 0'],
+        'title_color' => ['default' => '#1A428A', 'label' => 'Title Color', 'type' => 'color'],
+        'title_decor' => ['default' => '#009B4D', 'label' => 'Title Underline Color', 'type' => 'color'],
+    ];
+
+    foreach ($widget_settings as $key => $args) {
+        $setting_id = "clach_widget_{$key}";
+        $wp_customize->add_setting($setting_id, ['default' => $args['default'], 'sanitize_callback' => $args['type'] === 'color' ? 'sanitize_hex_color' : 'sanitize_text_field']);
+        
+        if ($args['type'] === 'color') {
+            $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, [
+                'label' => $args['label'],
+                'section' => 'clach_home_widgets_section',
+            ]));
+        } else {
+            $wp_customize->add_control($setting_id, [
+                'label' => $args['label'],
+                'description' => $args['desc'] ?? '',
+                'section' => 'clach_home_widgets_section',
+                'type' => 'text',
+            ]);
+        }
+    }
+
+    // === 6. BACK TO TOP SETTINGS ===
+    $wp_customize->add_section('clach_backtotop_section', [
+        'title' => __('Back to Top Button', 'clach'),
+        'priority' => 130,
+    ]);
+
+    $wp_customize->add_setting('clach_backtotop_icon', ['default' => 'fas fa-arrow-up', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('clach_backtotop_icon', [
+        'label' => __('Icon Class (FontAwesome)', 'clach'),
+        'description' => __('E.g: fas fa-arrow-up, fas fa-chevron-up', 'clach'),
+        'section' => 'clach_backtotop_section',
+        'type' => 'text',
+    ]);
+
+    $btt_colors = [
+        'bg'        => ['label' => 'Background Color', 'default' => '#1A428A'],
+        'color'     => ['label' => 'Icon Color', 'default' => '#FFFFFF'],
+        'hover_bg'  => ['label' => 'Hover Background', 'default' => '#009B4D'],
+        'hover_color'=> ['label' => 'Hover Icon Color', 'default' => '#FFFFFF'],
+    ];
+
+    foreach ($btt_colors as $id => $props) {
+        $setting_id = "clach_backtotop_{$id}";
+        $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_hex_color']);
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, [
+            'label' => $props['label'],
+            'section' => 'clach_backtotop_section',
+        ]));
+    }
+
+    // === 7. FOOTER CONTENT REPEATER ===
+    $wp_customize->add_section('clach_footer_content', [
+        'title' => __('Footer: Related Links', 'clach'),
+        'priority' => 120,
+    ]);
+
+    $related_icons = [
+        'fa-solid fa-globe' => 'Global Web',
+        'fa-solid fa-file-contract' => 'Certificate',
+        'fa-solid fa-building-columns' => 'Institution',
+        'fa-solid fa-scale-balanced' => 'Legal',
+    ];
+
+    $wp_customize->add_setting('_theme_related_sites_repeater', ['default' => '', 'sanitize_callback' => 'wp_kses_post']);
+    $wp_customize->add_control(new Clach_Repeater_Control($wp_customize, '_theme_related_sites_repeater', [
+        'label' => __('Links Manager', 'clach'),
+        'section' => 'clach_footer_content',
+        'repeater_icons' => $related_icons,
+        'button_text' => 'Add Link'
+    ]));
+
+    // Pass icons to global scope for Repeater script
+    $wp_customize->clach_icons = $related_icons;
+}
+add_action('customize_register', 'clach_customize_register');
