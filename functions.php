@@ -29,7 +29,7 @@ add_action( 'after_setup_theme', 'clach_setup' );
  * Registro de Widgets (Sidebars)
  */
 function clach_widgets_init() {
-    // 1. Zona Home (NUEVA)
+    // 1. Zona Home
     register_sidebar(array(
         'name'          => esc_html__('Widgets Inicio', 'clach'),
         'id'            => 'home-widgets',
@@ -40,7 +40,18 @@ function clach_widgets_init() {
         'after_title'   => '</h2>',
     ));
 
-    // 2. Zonas Footer (Existentes)
+    // 2. [NUEVO] Zona Topbar (Banderitas)
+    register_sidebar(array(
+        'name'          => esc_html__('Barra Superior (Derecha)', 'clach'),
+        'id'            => 'topbar-widget',
+        'description'   => esc_html__('Ideal para widgets de idiomas o redes sociales (ej. GTranslate).', 'clach'),
+        'before_widget' => '<div id="%1$s" class="topbar-widget-item %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<span class="screen-reader-text">',
+        'after_title'   => '</span>',
+    ));
+
+    // 3. Zonas Footer
     $footer_widgets_count = 3;
     for ($i = 1; $i <= $footer_widgets_count; $i++) {
         register_sidebar(array(
@@ -58,7 +69,6 @@ add_action( 'widgets_init', 'clach_widgets_init' );
 
 /**
  * Carga de Scripts y Estilos
- * Se actualiza para incluir los estilos de layout de página.
  */
 function clach_scripts() {
     $theme_version = _S_VERSION;
@@ -95,6 +105,5 @@ add_action( 'wp_enqueue_scripts', 'clach_scripts' );
 
 /**
  * Customizer
- * Carga la lógica para el repetidor de enlaces del footer.
  */
 require get_template_directory() . '/includes/customizer.php';

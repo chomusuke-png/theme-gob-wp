@@ -16,17 +16,40 @@
 .top-bar .container {
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Centrado vertical */
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-.top-links ul {
+/* Widget en Top Bar */
+.top-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.topbar-widget-item {
+    margin: 0;
+}
+
+/* Soporte para lista de GTranslate u otros widgets */
+.topbar-widget-item ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 15px;
+    gap: 10px;
+}
+
+.topbar-widget-item li {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.topbar-widget-item img {
+    vertical-align: middle;
 }
 
 /* Main Header Container */

@@ -15,12 +15,14 @@
     
     <div class="top-bar">
         <div class="container">
-            <div class="top-bar-content">
-                <span class="org-name">
-                    <?php echo esc_html(get_theme_mod('clach_topbar_text', 'Centro de Certificación Halal de Chile')); ?>
-                </span>
-                <nav class="top-links">
-                </nav>
+            <span class="org-name">
+                <?php echo esc_html(get_theme_mod('clach_topbar_text', 'Centro de Certificación Halal de Chile')); ?>
+            </span>
+            
+            <div class="top-links">
+                <?php if ( is_active_sidebar( 'topbar-widget' ) ) : ?>
+                    <?php dynamic_sidebar( 'topbar-widget' ); ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
