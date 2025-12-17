@@ -1,0 +1,21 @@
+/**
+ * Variables Globales (Custom Properties)
+ * Define la paleta de colores y configuraciones base del tema.
+ */
+:root {
+    /* Paleta Oficial */
+    --nhla-blue: #1A428A;   /* Azul del anillo exterior */
+    --nhla-green: #009B4D;  /* Verde de las letras árabes */
+    --nhla-red: #D32F2F;    /* Para alertas/Haram */
+    
+    /* Neutros Gubernamentales */
+    --bg-body: #F5F5F5;     /* Gris muy pálido para fondo general */
+    --bg-white: #FFFFFF;
+    --text-main: #333333;   /* Negro no puro para lectura */
+    --text-light: #666666;
+    --border-color: #CCCCCC; /* Borde sólido estándar */
+    
+    /* Espaciado y Tipografía */
+    --font-main: 'Arial', 'Helvetica', sans-serif;
+    --font-size-base: 14px;
+}

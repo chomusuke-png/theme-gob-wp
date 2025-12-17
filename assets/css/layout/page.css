@@ -1,0 +1,65 @@
+/**
+ * Layout: Estilos de Página
+ * Definiciones visuales para la plantilla page.php.
+ */
+
+.page-section {
+    padding: 60px 0;
+    background-color: var(--bg-white);
+    min-height: 60vh; /* Asegura que el footer no suba demasiado en páginas cortas */
+}
+
+.page-section .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-header {
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.page-title {
+    color: var(--nhla-blue);
+    font-size: 2.2rem;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Formato del contenido enriquecido (Wysiwyg) */
+.page-content {
+    font-size: 16px;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.page-content h2,
+.page-content h3,
+.page-content h4 {
+    color: var(--nhla-blue);
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.page-content h2 {
+    border-left: 4px solid var(--nhla-green);
+    padding-left: 15px;
+}
+
+.page-content p {
+    margin-bottom: 20px;
+}
+
+.page-content ul, 
+.page-content ol {
+    margin-bottom: 20px;
+    padding-left: 40px;
+}
+
+.page-content a {
+    color: var(--nhla-green);
+    font-weight: bold;
+}

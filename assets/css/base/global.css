@@ -1,0 +1,31 @@
+/**
+ * Estilos Globales y Reset
+ * Configuraciones base para etiquetas HTML estándar.
+ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+    color: var(--text-main);
+    background-color: var(--bg-body);
+    margin: 0;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: var(--nhla-blue);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Utilidad para botón "Ir arriba" si fuera necesario globalmente */
+button {
+    cursor: pointer;
+}

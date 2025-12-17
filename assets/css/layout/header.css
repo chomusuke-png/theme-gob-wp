@@ -1,0 +1,100 @@
+/**
+ * Layout: Header
+ * Incluye la barra superior (top-bar) y la navegación principal.
+ */
+
+/* Top Bar */
+.top-bar {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 5px 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-light);
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.top-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+/* Main Header Container */
+.site-header .main-header {
+    background-color: var(--nhla-blue);
+    color: var(--bg-white);
+    padding: 15px 0;
+    border-bottom: 4px solid var(--nhla-green);
+}
+
+.flex-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Branding & Logo */
+.site-branding {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.gov-logo {
+    height: 60px;
+    width: auto;
+}
+
+.branding-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.standard-version {
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.standard-desc {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* Navegación Principal */
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1px;
+}
+
+.main-navigation li a {
+    display: block;
+    color: var(--bg-white);
+    padding: 10px 15px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+}
+
+.main-navigation li a:hover {
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    text-decoration: none;
+}

@@ -1,0 +1,79 @@
+/**
+ * Modulo: Hero Section
+ * Estilos para la sección principal y formularios de búsqueda.
+ */
+.hero-gov-section {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.hero-gov-section .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.hero-title {
+    color: var(--nhla-blue);
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.hero-subtitle {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+/* Formulario Estilo Gobierno */
+.gov-search-wrapper {
+    background-color: var(--bg-body);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    display: inline-block;
+    width: 100%;
+}
+
+.search-form-additives {
+    display: flex;
+    gap: 10px;
+}
+
+.gov-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+    font-size: 14px;
+    background: var(--bg-white);
+}
+
+.gov-input:focus {
+    outline: 2px solid var(--nhla-blue);
+    border-color: var(--nhla-blue);
+}
+
+.gov-btn {
+    background-color: var(--nhla-blue);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.gov-btn:hover {
+    background-color: #123066;
+}
+
+.search-help {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--text-light);
+    text-align: left;
+}

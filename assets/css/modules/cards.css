@@ -1,0 +1,93 @@
+/**
+ * Modulo: Cards y Grillas
+ * Estilos para las tarjetas de información y su disposición en grilla.
+ */
+.quick-access-section {
+    padding: 40px 0;
+}
+
+.quick-access-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.gov-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Tarjeta Estándar */
+.gov-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    background-color: #EFEFEF;
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 15px;
+    color: var(--nhla-blue);
+    text-transform: uppercase;
+}
+
+.card-body {
+    padding: 15px;
+    flex-grow: 1;
+    font-size: 13px;
+}
+
+.card-footer {
+    padding: 10px 15px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-white);
+    text-align: right;
+}
+
+.gov-link-arrow {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--nhla-green);
+    text-transform: uppercase;
+}
+
+/* Listas internas */
+.gov-list {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.gov-list li {
+    margin-bottom: 5px;
+}
+
+/* Mini formulario de validación */
+.mini-validate-form {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.gov-input-small {
+    padding: 5px;
+    border: 1px solid var(--border-color);
+    font-size: 12px;
+    flex-grow: 1;
+}
+
+.gov-btn-small {
+    background: var(--nhla-green);
+    color: white;
+    border: none;
+    font-size: 11px;
+    padding: 0 10px;
+    cursor: pointer;
+}

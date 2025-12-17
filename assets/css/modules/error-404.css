@@ -1,0 +1,57 @@
+/**
+ * Module: Error 404
+ * Estilos para la página de "No encontrado".
+ */
+
+.error-404 {
+    padding: 100px 0;
+    text-align: center;
+    background-color: var(--bg-white);
+    min-height: 60vh;
+}
+
+.error-404 .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.error-404 .page-title {
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--nhla-blue);
+    margin: 0;
+    line-height: 1;
+    opacity: 0.1; /* Efecto marca de agua */
+}
+
+.error-404 .page-subtitle {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin-top: -40px; /* Superponer sobre el 404 grande */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.error-404 p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+}
+
+.btn-home {
+    display: inline-block;
+    background-color: var(--nhla-green);
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+
+.btn-home:hover {
+    background-color: #007a3d;
+    text-decoration: none;
+}

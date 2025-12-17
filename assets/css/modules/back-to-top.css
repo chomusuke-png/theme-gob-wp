@@ -1,0 +1,27 @@
+/**
+ * Modulo: Botón Volver Arriba
+ */
+#btnTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: var(--nhla-blue); /* Azul Oficial */
+    color: var(--bg-white);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: none; /* Oculto por defecto */
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+}
+
+#btnTop:hover {
+    background-color: var(--nhla-green); /* Verde al pasar el mouse */
+    transform: translateY(-3px);
+}
