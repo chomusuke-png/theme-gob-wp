@@ -16,7 +16,9 @@
     <div class="top-bar">
         <div class="container">
             <div class="top-bar-content">
-                <span class="org-name">Centro de Certificación Halal de Chile</span>
+                <span class="org-name">
+                    <?php echo esc_html(get_theme_mod('clach_topbar_text', 'Centro de Certificación Halal de Chile')); ?>
+                </span>
                 <nav class="top-links">
                 </nav>
             </div>
