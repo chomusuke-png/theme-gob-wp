@@ -1,11 +1,4 @@
 <?php
-/**
- * Template Name: Página Estándar
- * Description: Plantilla principal para la visualización de páginas estáticas (Page).
- *
- * @package Clach_Theme
- * @since 1.0.0
- */
 
 get_header();
 ?>

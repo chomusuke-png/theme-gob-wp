@@ -1,10 +1,4 @@
 <?php
-/**
- * The template for displaying 404 pages (not found)
- *
- * @package Clach_Theme
- * @since 1.0.0
- */
 
 get_header();
 ?>
