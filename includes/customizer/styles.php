@@ -32,6 +32,13 @@ function clach_customize_css() {
     $w_title = get_theme_mod('clach_widget_title_color', '#1A428A');
     $w_decor = get_theme_mod('clach_widget_title_decor', '#009B4D');
 
+    // Page Template [NUEVO]
+    $p_bg = get_theme_mod('clach_page_bg', '#FFFFFF');
+    $p_title = get_theme_mod('clach_page_title_color', '#1A428A');
+    $p_text = get_theme_mod('clach_page_text_color', '#333333');
+    $p_heading = get_theme_mod('clach_page_heading_color', '#1A428A');
+    $p_accent = get_theme_mod('clach_page_accent_color', '#009B4D');
+
     // Back to Top
     $btt_bg = get_theme_mod('clach_backtotop_bg', '#1A428A');
     $btt_color = get_theme_mod('clach_backtotop_color', '#FFFFFF');
@@ -70,6 +77,31 @@ function clach_customize_css() {
         .home-widget .widget-title {
             color: <?php echo esc_attr($w_title); ?> !important;
             border-bottom-color: <?php echo esc_attr($w_decor); ?> !important;
+        }
+
+        /* Page Template Styles */
+        .page-section {
+            background-color: <?php echo esc_attr($p_bg); ?> !important;
+        }
+        .page-title {
+            color: <?php echo esc_attr($p_title); ?> !important;
+        }
+        .page-content {
+            color: <?php echo esc_attr($p_text); ?> !important;
+        }
+        .page-content h1, 
+        .page-content h2, 
+        .page-content h3, 
+        .page-content h4, 
+        .page-content h5, 
+        .page-content h6 {
+            color: <?php echo esc_attr($p_heading); ?> !important;
+        }
+        .page-content h2 {
+            border-left-color: <?php echo esc_attr($p_accent); ?> !important;
+        }
+        .page-content a {
+            color: <?php echo esc_attr($p_accent); ?> !important;
         }
 
         /* Back to Top */

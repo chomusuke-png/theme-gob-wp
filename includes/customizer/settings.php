@@ -88,7 +88,6 @@ function clach_customize_register($wp_customize)
         'description' => __('Customize the appearance of widget containers on the home page.', 'clach')
     ]);
 
-    // Widget Settings
     $widget_settings = [
         'bg' => ['default' => '#F5F5F5', 'label' => 'Container Background', 'type' => 'color'],
         'border' => ['default' => '#CCCCCC', 'label' => 'Container Border Color', 'type' => 'color'],
@@ -116,7 +115,31 @@ function clach_customize_register($wp_customize)
         }
     }
 
-    // === 6. BACK TO TOP SETTINGS ===
+    // === 6. PAGE TEMPLATE STYLES [NUEVO] ===
+    $wp_customize->add_section('clach_page_settings_section', [
+        'title' => __('Page Template Styles', 'clach'),
+        'priority' => 45,
+        'description' => __('Customize colors for standard pages (page.php).', 'clach')
+    ]);
+
+    $page_colors = [
+        'bg'            => ['label' => 'Page Background', 'default' => '#FFFFFF'],
+        'title_color'   => ['label' => 'Page Title Color', 'default' => '#1A428A'],
+        'text_color'    => ['label' => 'Content Text Color', 'default' => '#333333'],
+        'heading_color' => ['label' => 'Headings (H2-H6) Color', 'default' => '#1A428A'],
+        'accent_color'  => ['label' => 'Accents & Links Color', 'default' => '#009B4D'],
+    ];
+
+    foreach ($page_colors as $key => $args) {
+        $setting_id = "clach_page_{$key}";
+        $wp_customize->add_setting($setting_id, ['default' => $args['default'], 'sanitize_callback' => 'sanitize_hex_color']);
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, [
+            'label' => $args['label'],
+            'section' => 'clach_page_settings_section',
+        ]));
+    }
+
+    // === 7. BACK TO TOP SETTINGS ===
     $wp_customize->add_section('clach_backtotop_section', [
         'title' => __('Back to Top Button', 'clach'),
         'priority' => 130,
@@ -146,7 +169,7 @@ function clach_customize_register($wp_customize)
         ]));
     }
 
-    // === 7. FOOTER CONTENT REPEATER ===
+    // === 8. FOOTER CONTENT REPEATER ===
     $wp_customize->add_section('clach_footer_content', [
         'title' => __('Footer: Related Links', 'clach'),
         'priority' => 120,
@@ -167,7 +190,6 @@ function clach_customize_register($wp_customize)
         'button_text' => 'Add Link'
     ]));
 
-    // Pass icons to global scope for Repeater script
     $wp_customize->clach_icons = $related_icons;
 }
 add_action('customize_register', 'clach_customize_register');
