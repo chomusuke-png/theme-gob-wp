@@ -16,10 +16,18 @@
 .top-bar .container {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Centrado vertical */
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+}
+
+.top-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
 }
 
 /* Widget en Top Bar */
@@ -33,7 +41,6 @@
     margin: 0;
 }
 
-/* Soporte para lista de GTranslate u otros widgets */
 .topbar-widget-item ul {
     list-style: none;
     margin: 0;
@@ -58,6 +65,8 @@
     color: var(--bg-white);
     padding: 15px 0;
     border-bottom: 4px solid var(--nhla-green);
+    position: relative; /* Asegura z-index correcto */
+    z-index: 1000;
 }
 
 .flex-header {
@@ -97,8 +106,12 @@
     opacity: 0.9;
 }
 
-/* Navegación Principal */
-.main-navigation ul {
+/* =========================================
+   NAVEGACIÓN PRINCIPAL & DROPDOWNS
+   ========================================= */
+
+/* Nivel 1 (Menú Principal) */
+.main-navigation > ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -106,17 +119,104 @@
     gap: 1px;
 }
 
+.main-navigation li {
+    position: relative; /* Clave para posicionar el submenú */
+}
+
 .main-navigation li a {
     display: block;
     color: var(--bg-white);
     padding: 10px 15px;
     font-size: 13px;
+    font-weight: bold;
     text-transform: uppercase;
     border: 1px solid transparent;
+    text-decoration: none;
+    transition: all 0.2s ease;
 }
 
 .main-navigation li a:hover {
     background-color: rgba(255,255,255,0.1);
     border: 1px solid rgba(255,255,255,0.3);
-    text-decoration: none;
+}
+
+/* Flecha automática para ítems con submenú (Requiere FontAwesome) */
+.main-navigation .menu-item-has-children > a::after {
+    content: '\f0d7'; /* Icono Chevron Down */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-left: 8px;
+    font-size: 10px;
+    opacity: 0.7;
+    transition: transform 0.3s;
+}
+
+/* Rotar flecha al hacer hover */
+.main-navigation .menu-item-has-children:hover > a::after {
+    transform: rotate(180deg);
+}
+
+/* Nivel 2 (Submenús Dropdown) */
+.main-navigation ul ul {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--nhla-blue); /* Hereda color del header */
+    min-width: 220px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-top: 3px solid var(--nhla-green); /* Acento visual */
+    padding: 0;
+    z-index: 9999;
+    list-style: none;
+    flex-direction: column; /* Apilar verticalmente */
+}
+
+/* Mostrar submenú al pasar el mouse */
+.main-navigation li:hover > ul {
+    display: flex;
+    animation: fadeInMenu 0.3s ease forwards;
+}
+
+/* Estilos de enlaces del Submenú */
+.main-navigation ul ul li a {
+    font-size: 12px;
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    text-transform: capitalize; /* Opcional: Primera letra mayúscula */
+}
+
+.main-navigation ul ul li:last-child a {
+    border-bottom: none;
+}
+
+/* Hover en ítems del submenú */
+.main-navigation ul ul li a:hover {
+    background-color: rgba(255,255,255,0.15); /* Un poco más claro */
+    padding-left: 20px; /* Efecto de desplazamiento */
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Nivel 3+ (Sub-submenús) */
+.main-navigation ul ul ul {
+    top: 0;
+    left: 100%; /* Se abre hacia la derecha */
+    border-top: none;
+    border-left: 3px solid var(--nhla-green);
+}
+
+/* Animación de entrada */
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
