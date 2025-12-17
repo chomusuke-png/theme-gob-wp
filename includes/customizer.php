@@ -3,7 +3,7 @@
  * CLACH Customizer Settings
  * Manages WordPress Customizer options including:
  * 1. Custom Repeater Control (Clach_Repeater_Control).
- * 2. Section & Setting Registration (Base, Header, Footer).
+ * 2. Section & Setting Registration (Base, Header, Footer, Modules).
  * 3. Dynamic CSS injection to override theme styles.
  */
 
@@ -11,13 +11,12 @@ if (class_exists('WP_Customize_Control')) {
 
     /**
      * Class Clach_Repeater_Control
-     * Renders a custom control for managing a list of links with icons.
      */
     class Clach_Repeater_Control extends WP_Customize_Control
     {
         public $type = 'clach_repeater';
         public $repeater_icons = [];
-        public $button_text = 'Add Item'; // Default in English
+        public $button_text = 'Add Item';
         public $input_labels = [
             'title' => 'Title', 
             'icon' => 'Icon / Class', 
@@ -93,48 +92,33 @@ if (class_exists('WP_Customize_Control')) {
 function clach_customize_register($wp_customize)
 {
     // === 1. SITE IDENTITY & TOP BAR ===
-    
-    // Top Bar Section
     $wp_customize->add_section('clach_topbar_section', [
         'title' => __('Top Bar Settings', 'clach'),
-        'priority' => 20, // Before Site Identity
+        'priority' => 20,
     ]);
 
-    // Top Bar Text Setting
-    $wp_customize->add_setting('clach_topbar_text', [
-        'default' => 'Centro de Certificación Halal de Chile',
-        'sanitize_callback' => 'sanitize_text_field'
-    ]);
+    $wp_customize->add_setting('clach_topbar_text', ['default' => 'Centro de Certificación Halal de Chile', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('clach_topbar_text', [
         'label' => __('Organization Name', 'clach'),
-        'description' => __('Text displayed in the gray top bar.', 'clach'),
         'section' => 'clach_topbar_section',
         'type' => 'text',
     ]);
 
-    // Branding Extra Fields (added to native title_tagline section)
     $wp_customize->add_setting('clach_branding_version', ['default' => 'N.H.L.A. 2021 - 3.0', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('clach_branding_version', [
         'label' => __('Version Text (Line 1)', 'clach'),
-        'section' => 'title_tagline', 
-        'type' => 'text',
-        'priority' => 20,
+        'section' => 'title_tagline', 'type' => 'text', 'priority' => 20,
     ]);
 
     $wp_customize->add_setting('clach_branding_desc', ['default' => 'Norma Halal Latinoamericana', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('clach_branding_desc', [
         'label' => __('Description Text (Line 2)', 'clach'),
-        'section' => 'title_tagline',
-        'type' => 'text',
-        'priority' => 21,
+        'section' => 'title_tagline', 'type' => 'text', 'priority' => 21,
     ]);
 
-    // === 2. GLOBAL COLORS (Base) ===
-    $wp_customize->add_section('clach_colors_global', [
-        'title' => __('Colors: Base & Global', 'clach'),
-        'priority' => 30
-    ]);
-
+    // === 2. GLOBAL COLORS ===
+    $wp_customize->add_section('clach_colors_global', ['title' => __('Colors: Base & Global', 'clach'), 'priority' => 30]);
+    
     $global_colors = [
         'nhla_blue'    => ['label' => 'Primary Blue (Brand)', 'default' => '#1A428A'],
         'nhla_green'   => ['label' => 'Primary Green (Brand)', 'default' => '#009B4D'],
@@ -147,17 +131,11 @@ function clach_customize_register($wp_customize)
     foreach ($global_colors as $id => $props) {
         $setting_id = "clach_color_{$id}";
         $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_hex_color']);
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, [
-            'label' => $props['label'],
-            'section' => 'clach_colors_global',
-        ]));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, ['label' => $props['label'], 'section' => 'clach_colors_global']));
     }
 
     // === 3. HEADER COLORS ===
-    $wp_customize->add_section('clach_colors_header', [
-        'title' => __('Colors: Header & Menu', 'clach'),
-        'priority' => 31
-    ]);
+    $wp_customize->add_section('clach_colors_header', ['title' => __('Colors: Header & Menu', 'clach'), 'priority' => 31]);
 
     $header_colors = [
         'header_bg'       => ['label' => 'Header Background', 'default' => '#1A428A'],
@@ -168,17 +146,11 @@ function clach_customize_register($wp_customize)
     foreach ($header_colors as $id => $props) {
         $setting_id = "clach_header_{$id}";
         $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_text_field']);
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, [
-            'label' => $props['label'],
-            'section' => 'clach_colors_header',
-        ]));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, ['label' => $props['label'], 'section' => 'clach_colors_header']));
     }
 
     // === 4. FOOTER COLORS ===
-    $wp_customize->add_section('clach_colors_footer', [
-        'title' => __('Colors: Footer', 'clach'),
-        'priority' => 32
-    ]);
+    $wp_customize->add_section('clach_colors_footer', ['title' => __('Colors: Footer', 'clach'), 'priority' => 32]);
 
     $footer_colors = [
         'footer_bg'         => ['label' => 'Footer Background', 'default' => '#1A428A'],
@@ -192,13 +164,42 @@ function clach_customize_register($wp_customize)
     foreach ($footer_colors as $id => $props) {
         $setting_id = "clach_footer_{$id}";
         $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_hex_color']);
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, ['label' => $props['label'], 'section' => 'clach_colors_footer']));
+    }
+
+    // === 5. BACK TO TOP SETTINGS [NUEVO] ===
+    $wp_customize->add_section('clach_backtotop_section', [
+        'title' => __('Back to Top Button', 'clach'),
+        'priority' => 130,
+    ]);
+
+    // Icon Class
+    $wp_customize->add_setting('clach_backtotop_icon', ['default' => 'fas fa-arrow-up', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('clach_backtotop_icon', [
+        'label' => __('Icon Class (FontAwesome)', 'clach'),
+        'description' => __('E.g: fas fa-arrow-up, fas fa-chevron-up, fas fa-angle-double-up', 'clach'),
+        'section' => 'clach_backtotop_section',
+        'type' => 'text',
+    ]);
+
+    // BTT Colors
+    $btt_colors = [
+        'bg'        => ['label' => 'Background Color', 'default' => '#1A428A'],
+        'color'     => ['label' => 'Icon Color', 'default' => '#FFFFFF'],
+        'hover_bg'  => ['label' => 'Hover Background', 'default' => '#009B4D'],
+        'hover_color'=> ['label' => 'Hover Icon Color', 'default' => '#FFFFFF'],
+    ];
+
+    foreach ($btt_colors as $id => $props) {
+        $setting_id = "clach_backtotop_{$id}";
+        $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_hex_color']);
         $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, [
             'label' => $props['label'],
-            'section' => 'clach_colors_footer',
+            'section' => 'clach_backtotop_section',
         ]));
     }
 
-    // === 5. FOOTER CONTENT REPEATER ===
+    // === 6. FOOTER CONTENT REPEATER ===
     $wp_customize->add_section('clach_footer_content', [
         'title' => __('Footer: Related Links', 'clach'),
         'priority' => 120,
@@ -219,17 +220,15 @@ function clach_customize_register($wp_customize)
         'button_text' => 'Add Link'
     ]));
 
-    // Pass icons to JS
     $wp_customize->clach_icons = $related_icons;
 }
 add_action('customize_register', 'clach_customize_register');
 
 /**
  * Inject Dynamic CSS into Head.
- * Priority 100 ensures this loads after theme styles to override them.
  */
 function clach_customize_css() {
-    // --- Global Values ---
+    // Globals
     $c_blue = get_theme_mod('clach_color_nhla_blue', '#1A428A');
     $c_green = get_theme_mod('clach_color_nhla_green', '#009B4D');
     $c_red = get_theme_mod('clach_color_nhla_red', '#D32F2F');
@@ -237,12 +236,12 @@ function clach_customize_css() {
     $c_text = get_theme_mod('clach_color_text_main', '#333333');
     $c_border = get_theme_mod('clach_color_border_color', '#CCCCCC');
 
-    // --- Header Values ---
+    // Header
     $h_bg = get_theme_mod('clach_header_header_bg', '#1A428A');
     $h_link = get_theme_mod('clach_header_nav_link', '#FFFFFF');
     $h_hover = get_theme_mod('clach_header_nav_link_hover', 'rgba(255,255,255,0.1)');
 
-    // --- Footer Values ---
+    // Footer
     $f_bg = get_theme_mod('clach_footer_footer_bg', '#1A428A');
     $f_title = get_theme_mod('clach_footer_footer_title', '#FFFFFF');
     $f_text = get_theme_mod('clach_footer_footer_text', '#CCCCCC');
@@ -250,9 +249,14 @@ function clach_customize_css() {
     $f_link_hover = get_theme_mod('clach_footer_footer_link_hover', '#FFFFFF');
     $f_copy = get_theme_mod('clach_footer_footer_copy', '#888888');
 
+    // Back to Top [NUEVO]
+    $btt_bg = get_theme_mod('clach_backtotop_bg', '#1A428A');
+    $btt_color = get_theme_mod('clach_backtotop_color', '#FFFFFF');
+    $btt_hover_bg = get_theme_mod('clach_backtotop_hover_bg', '#009B4D');
+    $btt_hover_color = get_theme_mod('clach_backtotop_hover_color', '#FFFFFF');
+
     ?>
     <style type="text/css" id="clach-customizer-css">
-        /* 1. Global Variables */
         :root {
             --nhla-blue: <?php echo esc_attr($c_blue); ?>;
             --nhla-green: <?php echo esc_attr($c_green); ?>;
@@ -262,36 +266,26 @@ function clach_customize_css() {
             --border-color: <?php echo esc_attr($c_border); ?>;
         }
 
-        /* 2. Header & Nav */
-        .site-header .main-header {
-            background-color: <?php echo esc_attr($h_bg); ?> !important;
-        }
-        .main-navigation li a {
-            color: <?php echo esc_attr($h_link); ?> !important;
-        }
-        .main-navigation li a:hover {
-            background-color: <?php echo esc_attr($h_hover); ?> !important;
-        }
+        /* Header */
+        .site-header .main-header { background-color: <?php echo esc_attr($h_bg); ?> !important; }
+        .main-navigation li a { color: <?php echo esc_attr($h_link); ?> !important; }
+        .main-navigation li a:hover { background-color: <?php echo esc_attr($h_hover); ?> !important; }
 
-        /* 3. Footer */
-        .footer {
-            background-color: <?php echo esc_attr($f_bg); ?> !important;
-            color: <?php echo esc_attr($f_text); ?> !important;
+        /* Footer */
+        .footer { background-color: <?php echo esc_attr($f_bg); ?> !important; color: <?php echo esc_attr($f_text); ?> !important; }
+        .footer-links h3, .footer-widget-title { color: <?php echo esc_attr($f_title); ?> !important; }
+        .footer-links a, .footer-widget a { color: <?php echo esc_attr($f_link); ?> !important; }
+        .footer-links a:hover, .footer-widget a:hover { color: <?php echo esc_attr($f_link_hover); ?> !important; }
+        .footer-copy { color: <?php echo esc_attr($f_copy); ?> !important; }
+
+        /* Back to Top */
+        #btnTop {
+            background-color: <?php echo esc_attr($btt_bg); ?> !important;
+            color: <?php echo esc_attr($btt_color); ?> !important;
         }
-        .footer-links h3,
-        .footer-widget-title {
-            color: <?php echo esc_attr($f_title); ?> !important;
-        }
-        .footer-links a,
-        .footer-widget a {
-            color: <?php echo esc_attr($f_link); ?> !important;
-        }
-        .footer-links a:hover,
-        .footer-widget a:hover {
-            color: <?php echo esc_attr($f_link_hover); ?> !important;
-        }
-        .footer-copy {
-            color: <?php echo esc_attr($f_copy); ?> !important;
+        #btnTop:hover {
+            background-color: <?php echo esc_attr($btt_hover_bg); ?> !important;
+            color: <?php echo esc_attr($btt_hover_color); ?> !important;
         }
     </style>
     <?php
@@ -299,7 +293,7 @@ function clach_customize_css() {
 add_action('wp_head', 'clach_customize_css', 100);
 
 /**
- * Localize Script for Repeater Control
+ * Localize Script
  */
 function clach_customize_scripts_localize() {
     global $wp_customize;

@@ -111,7 +111,6 @@
     color: var(--bg-white);
     padding: 10px 15px;
     font-size: 13px;
-    font-weight: bold;
     text-transform: uppercase;
     border: 1px solid transparent;
 }

@@ -40,30 +40,27 @@ function clach_widgets_init() {
         'after_title'   => '</h2>',
     ));
 
-    // 2. [NUEVO] Zona Topbar (Banderitas)
+    // 2. Zona Topbar (Banderitas)
     register_sidebar(array(
         'name'          => esc_html__('Barra Superior (Derecha)', 'clach'),
         'id'            => 'topbar-widget',
-        'description'   => esc_html__('Ideal para widgets de idiomas o redes sociales (ej. GTranslate).', 'clach'),
+        'description'   => esc_html__('Ideal para widgets de idiomas o redes sociales.', 'clach'),
         'before_widget' => '<div id="%1$s" class="topbar-widget-item %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<span class="screen-reader-text">',
         'after_title'   => '</span>',
     ));
 
-    // 3. Zonas Footer
-    $footer_widgets_count = 3;
-    for ($i = 1; $i <= $footer_widgets_count; $i++) {
-        register_sidebar(array(
-            'name'          => esc_html__("Footer Widget $i", 'clach'),
-            'id'            => "footer-widget-$i",
-            'description'   => esc_html__("Área para la columna $i del footer.", 'clach'),
-            'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
-            'after_widget'  => '</div>',
-            'before_title'  => '<h4 class="footer-widget-title">',
-            'after_title'   => '</h4>',
-        ));
-    }
+    // 3. Zona Footer (ÚNICA)
+    register_sidebar(array(
+        'name'          => esc_html__("Footer Principal", 'clach'),
+        'id'            => "footer-widget-main",
+        'description'   => esc_html__("Área única central del pie de página.", 'clach'),
+        'before_widget' => '<div id="%1$s" class="footer-widget single-column-widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="footer-widget-title">',
+        'after_title'   => '</h4>',
+    ));
 }
 add_action( 'widgets_init', 'clach_widgets_init' );
 
