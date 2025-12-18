@@ -185,7 +185,6 @@
         background-color: var(--nhla-blue);
         min-width: 220px;
         border-top: 3px solid var(--nhla-green);
-        /* Flat style: no shadow */
         box-shadow: none; 
         border-left: 1px solid rgba(0,0,0,0.1);
         border-right: 1px solid rgba(0,0,0,0.1);
@@ -210,7 +209,6 @@
 
     .main-navigation ul ul li a:hover {
         background-color: rgba(255,255,255,0.15);
-        padding-left: 20px;
     }
 }
 
