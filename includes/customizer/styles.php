@@ -12,10 +12,21 @@ function clach_customize_css() {
     $c_text = get_theme_mod('clach_color_text_main', '#333333');
     $c_border = get_theme_mod('clach_color_border_color', '#CCCCCC');
 
-    // Header
+    // Header Main
     $h_bg = get_theme_mod('clach_header_header_bg', '#1A428A');
     $h_link = get_theme_mod('clach_header_nav_link', '#FFFFFF');
     $h_hover = get_theme_mod('clach_header_nav_link_hover', 'rgba(255,255,255,0.1)');
+
+    // Header Submenus [NUEVO]
+    $h_sub_bg = get_theme_mod('clach_header_sub_bg', '#1A428A');
+    $h_sub_text = get_theme_mod('clach_header_sub_text', '#FFFFFF');
+    $h_sub_hover = get_theme_mod('clach_header_sub_hover_bg', 'rgba(255,255,255,0.15)');
+
+    // Mobile Menu
+    $m_icon = get_theme_mod('clach_mobile_toggle_icon', '#FFFFFF');
+    $m_bg = get_theme_mod('clach_mobile_menu_bg', '#1A428A');
+    $m_link = get_theme_mod('clach_mobile_link_color', '#FFFFFF');
+    $m_border = get_theme_mod('clach_mobile_border_color', 'rgba(255,255,255,0.1)');
 
     // Footer
     $f_bg = get_theme_mod('clach_footer_footer_bg', '#1A428A');
@@ -32,7 +43,7 @@ function clach_customize_css() {
     $w_title = get_theme_mod('clach_widget_title_color', '#1A428A');
     $w_decor = get_theme_mod('clach_widget_title_decor', '#009B4D');
 
-    // Page Template [NUEVO]
+    // Page Template
     $p_bg = get_theme_mod('clach_page_bg', '#FFFFFF');
     $p_title = get_theme_mod('clach_page_title_color', '#1A428A');
     $p_text = get_theme_mod('clach_page_text_color', '#333333');
@@ -56,10 +67,35 @@ function clach_customize_css() {
             --border-color: <?php echo esc_attr($c_border); ?>;
         }
 
-        /* Header */
+        /* Header Main */
         .site-header .main-header { background-color: <?php echo esc_attr($h_bg); ?> !important; }
         .main-navigation li a { color: <?php echo esc_attr($h_link); ?> !important; }
         .main-navigation li a:hover { background-color: <?php echo esc_attr($h_hover); ?> !important; }
+
+        /* Header Submenus (Desktop) */
+        @media (min-width: 992px) {
+            .main-navigation ul ul { 
+                background-color: <?php echo esc_attr($h_sub_bg); ?> !important; 
+            }
+            .main-navigation ul ul li a { 
+                color: <?php echo esc_attr($h_sub_text); ?> !important; 
+            }
+            .main-navigation ul ul li a:hover { 
+                background-color: <?php echo esc_attr($h_sub_hover); ?> !important; 
+            }
+        }
+
+        /* Mobile Menu */
+        .menu-toggle { color: <?php echo esc_attr($m_icon); ?> !important; }
+        @media (max-width: 991px) {
+            .main-navigation.toggled {
+                background-color: <?php echo esc_attr($m_bg); ?> !important;
+            }
+            .main-navigation.toggled li a {
+                color: <?php echo esc_attr($m_link); ?> !important;
+                border-bottom-color: <?php echo esc_attr($m_border); ?> !important;
+            }
+        }
 
         /* Footer */
         .footer { background-color: <?php echo esc_attr($f_bg); ?> !important; color: <?php echo esc_attr($f_text); ?> !important; }

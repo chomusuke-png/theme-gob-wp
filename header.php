@@ -52,8 +52,11 @@
                         <?php echo esc_html(get_theme_mod('clach_branding_desc', '')); ?>
                     </span>
                 </div>
-                
             </div>
+
+            <button id="menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
 
             <nav id="site-navigation" class="main-navigation">
                 <?php
