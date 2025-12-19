@@ -133,7 +133,7 @@
 .main-navigation li a {
     display: block;
     color: var(--bg-white);
-    font-size: 13px;
+    font-size: var(--font-size-base);
     font-weight: 1;
     text-transform: uppercase;
     text-decoration: none;

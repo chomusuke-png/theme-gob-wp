@@ -4,18 +4,18 @@
  */
 :root {
     /* Paleta Oficial */
-    --nhla-blue: #1A428A;   /* Azul del anillo exterior */
-    --nhla-green: #009B4D;  /* Verde de las letras árabes */
-    --nhla-red: #D32F2F;    /* Para alertas/Haram */
+    --nhla-blue: #1A428A;
+    --nhla-green: #009B4D;
+    --nhla-red: #D32F2F;
     
     /* Neutros Gubernamentales */
-    --bg-body: #F5F5F5;     /* Gris muy pálido para fondo general */
+    --bg-body: #F5F5F5;
     --bg-white: #FFFFFF;
-    --text-main: #333333;   /* Negro no puro para lectura */
+    --text-main: #333333;
     --text-light: #666666;
-    --border-color: #CCCCCC; /* Borde sólido estándar */
+    --border-color: #CCCCCC;
     
     /* Espaciado y Tipografía */
     --font-main: 'Arial', 'Helvetica', sans-serif;
-    --font-size-base: 14px;
+    --font-size-base: 12px;
 }
