@@ -36,14 +36,14 @@ function gob_customize_register($wp_customize)
         'priority' => 10,
     ]);
 
-    $wp_customize->add_setting('gob_branding_version', ['default' => 'N.H.L.A. 2021 - 3.0', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_setting('gob_branding_version', ['default' => 'Example Text', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('gob_branding_version', [
-        'label'   => __('Texto de Versión (Línea 1)', 'gob'),
+        'label'   => __('Titulo (Línea 1)', 'gob'),
         'section' => 'gob_branding_section', 
         'type'    => 'text',
     ]);
 
-    $wp_customize->add_setting('gob_branding_desc', ['default' => 'Norma Halal Latinoamericana', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_setting('gob_branding_desc', ['default' => 'Example Description', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('gob_branding_desc', [
         'label'   => __('Descripción (Línea 2)', 'gob'),
         'section' => 'gob_branding_section', 
