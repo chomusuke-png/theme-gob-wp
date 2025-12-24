@@ -17,7 +17,7 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--nhla-blue);
+    color: var(--color-primary);
     transition: color 0.2s ease;
 }
 

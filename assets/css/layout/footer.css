@@ -3,11 +3,11 @@
  * Estilos para el pie de página, widgets y copyright.
  */
 .footer {
-    background: var(--nhla-blue);
+    background: var(--color-primary);
     color: #ccc;
     padding: 60px 20px 30px;
     margin-top: 80px;
-    border-top: 5px solid var(--nhla-green);
+    border-top: 5px solid var(--color-secondary);
 }
 
 .footer-container {
@@ -29,7 +29,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     display: inline-block;
-    border-bottom: 2px solid var(--nhla-green);
+    border-bottom: 2px solid var(--color-secondary);
     padding-bottom: 8px;
 }
 
@@ -59,8 +59,8 @@
 
 .footer-links a:hover {
     color: #fff;
-    background: var(--nhla-green);
-    border-color: var(--nhla-green);
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }

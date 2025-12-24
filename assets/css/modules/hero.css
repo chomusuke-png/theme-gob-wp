@@ -16,7 +16,7 @@
 }
 
 .hero-title {
-    color: var(--nhla-blue);
+    color: var(--color-primary);
     margin-bottom: 10px;
     font-size: 24px;
 }
@@ -51,12 +51,12 @@
 }
 
 .gov-input:focus {
-    outline: 2px solid var(--nhla-blue);
-    border-color: var(--nhla-blue);
+    outline: 2px solid var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 .gov-btn {
-    background-color: var(--nhla-blue);
+    background-color: var(--color-primary);
     color: white;
     border: none;
     padding: 0 20px;

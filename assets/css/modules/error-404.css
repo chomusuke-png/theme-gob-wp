@@ -19,7 +19,7 @@
 .error-404 .page-title {
     font-size: 8rem;
     font-weight: 900;
-    color: var(--nhla-blue);
+    color: var(--color-primary);
     margin: 0;
     line-height: 1;
     opacity: 0.1; /* Efecto marca de agua */
@@ -41,7 +41,7 @@
 
 .btn-home {
     display: inline-block;
-    background-color: var(--nhla-green);
+    background-color: var(--color-secondary);
     color: #fff;
     padding: 12px 30px;
     text-decoration: none;

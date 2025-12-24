@@ -35,7 +35,7 @@
 .card-header h3 {
     margin: 0;
     font-size: 15px;
-    color: var(--nhla-blue);
+    color: var(--color-primary);
     text-transform: uppercase;
 }
 
@@ -55,7 +55,7 @@
 .gov-link-arrow {
     font-size: 12px;
     font-weight: bold;
-    color: var(--nhla-green);
+    color: var(--color-secondary);
     text-transform: uppercase;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .gov-btn-small {
-    background: var(--nhla-green);
+    background: var(--color-secondary);
     color: white;
     border: none;
     font-size: 11px;

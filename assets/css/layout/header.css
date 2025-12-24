@@ -61,10 +61,10 @@
 
 /* Main Header Container */
 .site-header .main-header {
-    background-color: var(--nhla-blue);
+    background-color: var(--color-primary);
     color: var(--bg-white);
     padding: 15px 0;
-    border-bottom: 4px solid var(--nhla-green);
+    border-bottom: 4px solid var(--color-secondary);
     position: relative; /* Asegura z-index correcto */
     z-index: 1000;
 }
@@ -182,9 +182,9 @@
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: var(--nhla-blue);
+        background-color: var(--color-primary);
         min-width: 220px;
-        border-top: 3px solid var(--nhla-green);
+        border-top: 3px solid var(--color-secondary);
         box-shadow: none; 
         border-left: 1px solid rgba(0,0,0,0.1);
         border-right: 1px solid rgba(0,0,0,0.1);

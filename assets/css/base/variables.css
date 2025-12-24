@@ -4,9 +4,9 @@
  */
 :root {
     /* Paleta Oficial */
-    --nhla-blue: #1A428A;
-    --nhla-green: #009B4D;
-    --nhla-red: #D32F2F;
+    --color-primary: #1A428A;
+    --color-secondary: #009B4D;
+    --color-danger: #D32F2F;
     
     /* Neutros Gubernamentales */
     --bg-body: #F5F5F5;
@@ -18,4 +18,5 @@
     /* Espaciado y Tipografía */
     --font-main: 'Arial', 'Helvetica', sans-serif;
     --font-size-base: 12px;
+    --font-size-title: 24px;
 }

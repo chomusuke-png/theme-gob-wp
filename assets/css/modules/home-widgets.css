@@ -30,12 +30,12 @@
 
 /* Título del Widget */
 .home-widget .widget-title {
-    color: var(--nhla-blue);
+    color: var(--color-primary);
     font-size: 1.5rem;
     margin-top: 0;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid var(--nhla-green);
+    border-bottom: 2px solid var(--color-secondary);
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 0.5px;
