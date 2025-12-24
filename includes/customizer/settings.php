@@ -31,19 +31,21 @@ function clach_customize_register($wp_customize)
         'section' => 'title_tagline', 'type' => 'text', 'priority' => 21,
     ]);
 
-    // === 2. GLOBAL COLORS ===
+    // === 2. GLOBAL COLORS (ACTUALIZADO) ===
     $wp_customize->add_section('clach_colors_global', ['title' => __('Colors: Base & Global', 'clach'), 'priority' => 30]);
     
+    // Aquí cambiamos los IDs para que coincidan con la nueva nomenclatura
     $global_colors = [
-        'nhla_blue'    => ['label' => 'Primary Blue (Brand)', 'default' => '#1A428A'],
-        'nhla_green'   => ['label' => 'Primary Green (Brand)', 'default' => '#009B4D'],
-        'nhla_red'     => ['label' => 'Red (Alerts)', 'default' => '#D32F2F'],
-        'bg_body'      => ['label' => 'Body Background', 'default' => '#F5F5F5'],
-        'text_main'    => ['label' => 'Main Text', 'default' => '#333333'],
+        'primary'   => ['label' => 'Primary Color (Brand)', 'default' => '#1A428A'],
+        'secondary' => ['label' => 'Secondary Color (Brand)', 'default' => '#009B4D'],
+        'danger'    => ['label' => 'Danger/Alert Color', 'default' => '#D32F2F'],
+        'bg_body'   => ['label' => 'Body Background', 'default' => '#F5F5F5'],
+        'text_main' => ['label' => 'Main Text', 'default' => '#333333'],
         'border_color' => ['label' => 'Border Color', 'default' => '#CCCCCC'],
     ];
 
     foreach ($global_colors as $id => $props) {
+        // Esto generará IDs como 'clach_color_primary' en vez de 'clach_color_nhla_blue'
         $setting_id = "clach_color_{$id}";
         $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_hex_color']);
         $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, ['label' => $props['label'], 'section' => 'clach_colors_global']));
@@ -52,7 +54,6 @@ function clach_customize_register($wp_customize)
     // === 3. HEADER & MENU COLORS ===
     $wp_customize->add_section('clach_colors_header', ['title' => __('Colors: Header & Menu', 'clach'), 'priority' => 31]);
 
-    // Cabecera Principal
     $header_colors = [
         'header_bg'       => ['label' => 'Header Background', 'default' => '#1A428A'],
         'nav_link'        => ['label' => 'Menu Link Color', 'default' => '#FFFFFF'],
@@ -65,7 +66,6 @@ function clach_customize_register($wp_customize)
         $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, ['label' => $props['label'], 'section' => 'clach_colors_header']));
     }
 
-    // [NUEVO] Colores de Submenús (Dropdowns)
     $submenu_colors = [
         'sub_bg'       => ['label' => 'Submenu Background', 'default' => '#1A428A'],
         'sub_text'     => ['label' => 'Submenu Text Color', 'default' => '#FFFFFF'],
@@ -76,7 +76,7 @@ function clach_customize_register($wp_customize)
         $setting_id = "clach_header_{$id}";
         $wp_customize->add_setting($setting_id, ['default' => $props['default'], 'sanitize_callback' => 'sanitize_text_field']);
         $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting_id, [
-            'label' => $props['label'] . ' (Dropdown)', // Etiqueta para diferenciar
+            'label' => $props['label'] . ' (Dropdown)',
             'section' => 'clach_colors_header'
         ]));
     }
@@ -125,7 +125,6 @@ function clach_customize_register($wp_customize)
     $wp_customize->add_section('clach_home_widgets_section', [
         'title' => __('Widgets: Home Page Styles', 'clach'),
         'priority' => 40,
-        'description' => __('Customize the appearance of widget containers on the home page.', 'clach')
     ]);
 
     $widget_settings = [
@@ -159,17 +158,14 @@ function clach_customize_register($wp_customize)
     $wp_customize->add_section('clach_page_settings_section', [
         'title' => __('Page Template Styles', 'clach'),
         'priority' => 45,
-        'description' => __('Customize colors for standard pages (page.php).', 'clach')
     ]);
 
-    // Checkbox para ocultar título
     $wp_customize->add_setting('clach_page_hide_title', [
         'default' => false,
         'sanitize_callback' => 'wp_validate_boolean',
     ]);
     $wp_customize->add_control('clach_page_hide_title', [
         'label' => __('Ocultar Título de la Página', 'clach'),
-        'description' => __('Marca esta casilla si prefieres que no se muestre el título H1 al inicio de la página.', 'clach'),
         'section' => 'clach_page_settings_section',
         'type' => 'checkbox',
         'priority' => 10, 

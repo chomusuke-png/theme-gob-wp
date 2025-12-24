@@ -5,9 +5,10 @@
 
 function clach_customize_css() {
     // Globals
-    $c_blue = get_theme_mod('clach_color_nhla_blue', '#1A428A');
-    $c_green = get_theme_mod('clach_color_nhla_green', '#009B4D');
-    $c_red = get_theme_mod('clach_color_nhla_red', '#D32F2F');
+    $c_primary = get_theme_mod('clach_color_primary', '#1A428A');
+    $c_secondary = get_theme_mod('clach_color_secondary', '#009B4D');
+    $c_danger = get_theme_mod('clach_color_danger', '#D32F2F');
+    
     $c_bg = get_theme_mod('clach_color_bg_body', '#F5F5F5');
     $c_text = get_theme_mod('clach_color_text_main', '#333333');
     $c_border = get_theme_mod('clach_color_border_color', '#CCCCCC');
@@ -17,7 +18,7 @@ function clach_customize_css() {
     $h_link = get_theme_mod('clach_header_nav_link', '#FFFFFF');
     $h_hover = get_theme_mod('clach_header_nav_link_hover', 'rgba(255,255,255,0.1)');
 
-    // Header Submenus [NUEVO]
+    // Header Submenus
     $h_sub_bg = get_theme_mod('clach_header_sub_bg', '#1A428A');
     $h_sub_text = get_theme_mod('clach_header_sub_text', '#FFFFFF');
     $h_sub_hover = get_theme_mod('clach_header_sub_hover_bg', 'rgba(255,255,255,0.15)');
@@ -59,9 +60,10 @@ function clach_customize_css() {
     ?>
     <style type="text/css" id="clach-customizer-css">
         :root {
-            --nhla-blue: <?php echo esc_attr($c_blue); ?>;
-            --nhla-green: <?php echo esc_attr($c_green); ?>;
-            --nhla-red: <?php echo esc_attr($c_red); ?>;
+            --color-primary: <?php echo esc_attr($c_primary); ?>;
+            --color-secondary: <?php echo esc_attr($c_secondary); ?>;
+            --color-danger: <?php echo esc_attr($c_danger); ?>;
+            
             --bg-body: <?php echo esc_attr($c_bg); ?>;
             --text-main: <?php echo esc_attr($c_text); ?>;
             --border-color: <?php echo esc_attr($c_border); ?>;
@@ -72,7 +74,7 @@ function clach_customize_css() {
         .main-navigation li a { color: <?php echo esc_attr($h_link); ?> !important; }
         .main-navigation li a:hover { background-color: <?php echo esc_attr($h_hover); ?> !important; }
 
-        /* Header Submenus (Desktop) */
+        /* Header Submenus */
         @media (min-width: 992px) {
             .main-navigation ul ul { 
                 background-color: <?php echo esc_attr($h_sub_bg); ?> !important; 
