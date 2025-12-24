@@ -17,6 +17,6 @@
     
     /* Espaciado y Tipografía */
     --font-main: 'Arial', 'Helvetica', sans-serif;
-    --font-size-base: 12px;
-    --font-size-title: 24px;
+    --font-size-base: 0.75rem;
+    --font-size-title: 1.5rem;
 }

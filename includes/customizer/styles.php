@@ -3,62 +3,62 @@
  * Salida de CSS Dinámico del Customizer
  */
 
-function clach_customize_css() {
+function gob_customize_css() {
     // Globals
-    $c_primary = get_theme_mod('clach_color_primary', '#1A428A');
-    $c_secondary = get_theme_mod('clach_color_secondary', '#009B4D');
-    $c_danger = get_theme_mod('clach_color_danger', '#D32F2F');
+    $c_primary = get_theme_mod('gob_color_primary', '#1A428A');
+    $c_secondary = get_theme_mod('gob_color_secondary', '#009B4D');
+    $c_danger = get_theme_mod('gob_color_danger', '#D32F2F');
     
-    $c_bg = get_theme_mod('clach_color_bg_body', '#F5F5F5');
-    $c_text = get_theme_mod('clach_color_text_main', '#333333');
-    $c_border = get_theme_mod('clach_color_border_color', '#CCCCCC');
+    $c_bg = get_theme_mod('gob_color_bg_body', '#F5F5F5');
+    $c_text = get_theme_mod('gob_color_text_main', '#333333');
+    $c_border = get_theme_mod('gob_color_border_color', '#CCCCCC');
 
     // Header Main
-    $h_bg = get_theme_mod('clach_header_header_bg', '#1A428A');
-    $h_link = get_theme_mod('clach_header_nav_link', '#FFFFFF');
-    $h_hover = get_theme_mod('clach_header_nav_link_hover', 'rgba(255,255,255,0.1)');
+    $h_bg = get_theme_mod('gob_header_header_bg', '#1A428A');
+    $h_link = get_theme_mod('gob_header_nav_link', '#FFFFFF');
+    $h_hover = get_theme_mod('gob_header_nav_link_hover', 'rgba(255,255,255,0.1)');
 
     // Header Submenus
-    $h_sub_bg = get_theme_mod('clach_header_sub_bg', '#1A428A');
-    $h_sub_text = get_theme_mod('clach_header_sub_text', '#FFFFFF');
-    $h_sub_hover = get_theme_mod('clach_header_sub_hover_bg', 'rgba(255,255,255,0.15)');
+    $h_sub_bg = get_theme_mod('gob_header_sub_bg', '#1A428A');
+    $h_sub_text = get_theme_mod('gob_header_sub_text', '#FFFFFF');
+    $h_sub_hover = get_theme_mod('gob_header_sub_hover_bg', 'rgba(255,255,255,0.15)');
 
     // Mobile Menu
-    $m_icon = get_theme_mod('clach_mobile_toggle_icon', '#FFFFFF');
-    $m_bg = get_theme_mod('clach_mobile_menu_bg', '#1A428A');
-    $m_link = get_theme_mod('clach_mobile_link_color', '#FFFFFF');
-    $m_border = get_theme_mod('clach_mobile_border_color', 'rgba(255,255,255,0.1)');
+    $m_icon = get_theme_mod('gob_mobile_toggle_icon', '#FFFFFF');
+    $m_bg = get_theme_mod('gob_mobile_menu_bg', '#1A428A');
+    $m_link = get_theme_mod('gob_mobile_link_color', '#FFFFFF');
+    $m_border = get_theme_mod('gob_mobile_border_color', 'rgba(255,255,255,0.1)');
 
     // Footer
-    $f_bg = get_theme_mod('clach_footer_footer_bg', '#1A428A');
-    $f_title = get_theme_mod('clach_footer_footer_title', '#FFFFFF');
-    $f_text = get_theme_mod('clach_footer_footer_text', '#CCCCCC');
-    $f_link = get_theme_mod('clach_footer_footer_link', '#BBBBBB');
-    $f_link_hover = get_theme_mod('clach_footer_footer_link_hover', '#FFFFFF');
-    $f_copy = get_theme_mod('clach_footer_footer_copy', '#888888');
+    $f_bg = get_theme_mod('gob_footer_footer_bg', '#1A428A');
+    $f_title = get_theme_mod('gob_footer_footer_title', '#FFFFFF');
+    $f_text = get_theme_mod('gob_footer_footer_text', '#CCCCCC');
+    $f_link = get_theme_mod('gob_footer_footer_link', '#BBBBBB');
+    $f_link_hover = get_theme_mod('gob_footer_footer_link_hover', '#FFFFFF');
+    $f_copy = get_theme_mod('gob_footer_footer_copy', '#888888');
 
     // Home Widgets
-    $w_bg = get_theme_mod('clach_widget_bg', '#F5F5F5');
-    $w_border = get_theme_mod('clach_widget_border', '#CCCCCC');
-    $w_radius = get_theme_mod('clach_widget_radius', '4px');
-    $w_title = get_theme_mod('clach_widget_title_color', '#1A428A');
-    $w_decor = get_theme_mod('clach_widget_title_decor', '#009B4D');
+    $w_bg = get_theme_mod('gob_widget_bg', '#F5F5F5');
+    $w_border = get_theme_mod('gob_widget_border', '#CCCCCC');
+    $w_radius = get_theme_mod('gob_widget_radius', '4px');
+    $w_title = get_theme_mod('gob_widget_title_color', '#1A428A');
+    $w_decor = get_theme_mod('gob_widget_title_decor', '#009B4D');
 
     // Page Template
-    $p_bg = get_theme_mod('clach_page_bg', '#FFFFFF');
-    $p_title = get_theme_mod('clach_page_title_color', '#1A428A');
-    $p_text = get_theme_mod('clach_page_text_color', '#333333');
-    $p_heading = get_theme_mod('clach_page_heading_color', '#1A428A');
-    $p_accent = get_theme_mod('clach_page_accent_color', '#009B4D');
+    $p_bg = get_theme_mod('gob_page_bg', '#FFFFFF');
+    $p_title = get_theme_mod('gob_page_title_color', '#1A428A');
+    $p_text = get_theme_mod('gob_page_text_color', '#333333');
+    $p_heading = get_theme_mod('gob_page_heading_color', '#1A428A');
+    $p_accent = get_theme_mod('gob_page_accent_color', '#009B4D');
 
     // Back to Top
-    $btt_bg = get_theme_mod('clach_backtotop_bg', '#1A428A');
-    $btt_color = get_theme_mod('clach_backtotop_color', '#FFFFFF');
-    $btt_hover_bg = get_theme_mod('clach_backtotop_hover_bg', '#009B4D');
-    $btt_hover_color = get_theme_mod('clach_backtotop_hover_color', '#FFFFFF');
+    $btt_bg = get_theme_mod('gob_backtotop_bg', '#1A428A');
+    $btt_color = get_theme_mod('gob_backtotop_color', '#FFFFFF');
+    $btt_hover_bg = get_theme_mod('gob_backtotop_hover_bg', '#009B4D');
+    $btt_hover_color = get_theme_mod('gob_backtotop_hover_color', '#FFFFFF');
 
     ?>
-    <style type="text/css" id="clach-customizer-css">
+    <style type="text/css" id="gob-customizer-css">
         :root {
             --color-primary: <?php echo esc_attr($c_primary); ?>;
             --color-secondary: <?php echo esc_attr($c_secondary); ?>;
@@ -107,7 +107,7 @@ function clach_customize_css() {
         .footer-copy { color: <?php echo esc_attr($f_copy); ?> !important; }
 
         /* Home Widgets */
-        .clach-widget.home-widget {
+        .gob-widget.home-widget {
             background-color: <?php echo esc_attr($w_bg); ?> !important;
             border-color: <?php echo esc_attr($w_border); ?> !important;
             border-radius: <?php echo esc_attr($w_radius); ?> !important;
@@ -154,4 +154,4 @@ function clach_customize_css() {
     </style>
     <?php
 }
-add_action('wp_head', 'clach_customize_css', 100);
+add_action('wp_head', 'gob_customize_css', 100);

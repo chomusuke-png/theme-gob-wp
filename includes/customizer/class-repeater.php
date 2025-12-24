@@ -5,9 +5,9 @@
 
 if (class_exists('WP_Customize_Control')) {
 
-    class Clach_Repeater_Control extends WP_Customize_Control
+    class Gob_Repeater_Control extends WP_Customize_Control
     {
-        public $type = 'clach_repeater';
+        public $type = 'gob_repeater';
         public $repeater_icons = [];
         public $button_text = 'Add Item';
         public $input_labels = [
@@ -27,8 +27,8 @@ if (class_exists('WP_Customize_Control')) {
         public function enqueue()
         {
             wp_enqueue_script('jquery-ui-sortable');
-            wp_enqueue_script('clach-repeater-js', get_template_directory_uri() . '/assets/admin/js/repeater.js', ['jquery', 'jquery-ui-sortable'], '1.0', true);
-            wp_enqueue_style('clach-repeater-css', get_template_directory_uri() . '/assets/admin/css/repeater.css', [], '1.0');
+            wp_enqueue_script('gob-repeater-js', get_template_directory_uri() . '/assets/admin/js/repeater.js', ['jquery', 'jquery-ui-sortable'], '1.0', true);
+            wp_enqueue_style('gob-repeater-css', get_template_directory_uri() . '/assets/admin/css/repeater.css', [], '1.0');
         }
         
         public function render_content()
@@ -42,12 +42,12 @@ if (class_exists('WP_Customize_Control')) {
                 <?php endif; ?>
             </label>
 
-            <div class="clach-repeater-wrapper <?php echo esc_attr($this->id); ?>">
+            <div class="gob-repeater-wrapper <?php echo esc_attr($this->id); ?>">
                 <button type="button" class="button add-repeater-item"><?php echo esc_html($this->button_text); ?></button>
 
-                <ul class="clach-repeater-list">
+                <ul class="gob-repeater-list">
                     <?php if (!empty($value)): foreach ($value as $item): ?>
-                        <li class="clach-repeater-item">
+                        <li class="gob-repeater-item">
                             <label class="field-label"><?php echo esc_html($this->input_labels['title']); ?></label>
                             <input type="text" class="title-field" value="<?php echo esc_attr($item['title'] ?? ''); ?>">
 
@@ -72,7 +72,7 @@ if (class_exists('WP_Customize_Control')) {
                         </li>
                     <?php endforeach; endif; ?>
                 </ul>
-                <input type="hidden" class="clach-repeater-hidden" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>">
+                <input type="hidden" class="gob-repeater-hidden" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>">
             </div>
             <?php
         }
@@ -82,9 +82,9 @@ if (class_exists('WP_Customize_Control')) {
 /**
  * Localización de Scripts (Pasar datos PHP a JS para el repetidor)
  */
-function clach_customize_scripts_localize() {
+function gob_customize_scripts_localize() {
     global $wp_customize;
-    $icons = isset($wp_customize->clach_icons) ? $wp_customize->clach_icons : [];
-    wp_localize_script('clach-repeater-js', 'ClachRepeaterData', ['icons' => $icons]);
+    $icons = isset($wp_customize->gob_icons) ? $wp_customize->gob_icons : [];
+    wp_localize_script('gob-repeater-js', 'gobRepeaterData', ['icons' => $icons]);
 }
-add_action('customize_controls_enqueue_scripts', 'clach_customize_scripts_localize');
+add_action('customize_controls_enqueue_scripts', 'gob_customize_scripts_localize');

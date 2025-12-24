@@ -38,7 +38,7 @@
 </footer>
 
 <button id="btnTop">
-    <i class="<?php echo esc_attr(get_theme_mod('clach_backtotop_icon', 'fas fa-arrow-up')); ?>"></i>
+    <i class="<?php echo esc_attr(get_theme_mod('gob_backtotop_icon', 'fas fa-arrow-up')); ?>"></i>
 </button>
 
 <?php wp_footer(); ?>

@@ -4,13 +4,13 @@
  * Carga los módulos individuales del personalizador.
  */
 
-$clach_customizer_dir = get_template_directory() . '/includes/customizer/';
+$gob_customizer_dir = get_template_directory() . '/includes/customizer/';
 
 // 1. Controles Personalizados (Clases y scripts JS asociados)
-require $clach_customizer_dir . 'class-repeater.php';
+require $gob_customizer_dir . 'class-repeater.php';
 
 // 2. Configuración (Registro de paneles, secciones y settings)
-require $clach_customizer_dir . 'settings.php';
+require $gob_customizer_dir . 'settings.php';
 
 // 3. Salida Visual (Inyección de CSS dinámico)
-require $clach_customizer_dir . 'styles.php';
+require $gob_customizer_dir . 'styles.php';

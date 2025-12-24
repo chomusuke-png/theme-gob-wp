@@ -12,7 +12,7 @@ get_header();
         <section class="page-section">
             <div class="container">
                 
-                <?php if ( ! get_theme_mod('clach_page_hide_title', false) ) : ?>
+                <?php if ( ! get_theme_mod('gob_page_hide_title', false) ) : ?>
                     <header class="page-header">
                         <h1 class="page-title"><?php the_title(); ?></h1>
                     </header>

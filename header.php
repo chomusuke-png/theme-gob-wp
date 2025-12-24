@@ -16,7 +16,7 @@
     <div class="top-bar">
         <div class="container">
             <span class="org-name">
-                <?php echo esc_html(get_theme_mod('clach_topbar_text', 'Centro de Certificación Halal de Chile')); ?>
+                <?php echo esc_html(get_theme_mod('gob_topbar_text', 'Centro de Certificación Halal de Chile')); ?>
             </span>
             
             <div class="top-links">
@@ -46,10 +46,10 @@
                 
                 <div class="branding-text">
                     <span class="standard-version">
-                        <?php echo esc_html(get_theme_mod('clach_branding_version', '')); ?>
+                        <?php echo esc_html(get_theme_mod('gob_branding_version', '')); ?>
                     </span>
                     <span class="standard-desc">
-                        <?php echo esc_html(get_theme_mod('clach_branding_desc', '')); ?>
+                        <?php echo esc_html(get_theme_mod('gob_branding_desc', '')); ?>
                     </span>
                 </div>
             </div>
