@@ -1,37 +1,36 @@
 jQuery(document).ready(function ($) {
 
-    if (typeof ClachRepeaterData === 'undefined') return;
+    if (typeof gobRepeaterData === 'undefined') return;
 
     // Función para actualizar el input oculto que guarda el JSON
     function updateField(wrapper) {
         let items = [];
-        wrapper.find('.clach-repeater-item').each(function () {
+        wrapper.find('.gob-repeater-item').each(function () {
             items.push({
                 title: $(this).find('.title-field').val(),
                 icon: $(this).find('.icon-field').val(),
                 url: $(this).find('.url-field').val()
             });
         });
-        // Dispara el cambio para que WP detecte la modificación
-        wrapper.find('.clach-repeater-hidden').val(JSON.stringify(items)).trigger('change');
+        wrapper.find('.gob-repeater-hidden').val(JSON.stringify(items)).trigger('change');
     }
 
     // Generador de opciones para el select
     function generateOptions() {
         let options = '<option value="">Elegir icono...</option>';
-        for (const [cls, lbl] of Object.entries(ClachRepeaterData.icons)) {
+        for (const [cls, lbl] of Object.entries(gobRepeaterData.icons)) {
             options += `<option value="${cls}">${lbl}</option>`;
         }
         return options;
     }
 
     // Inicialización
-    $('.clach-repeater-wrapper').each(function () {
+    $('.gob-repeater-wrapper').each(function () {
         const wrapper = $(this);
         const optionsHtml = generateOptions();
 
         // Ordenable (Sortable)
-        wrapper.find('.clach-repeater-list').sortable({
+        wrapper.find('.gob-repeater-list').sortable({
             handle: '.drag-handle',
             update: function () { updateField(wrapper); }
         });
@@ -39,7 +38,7 @@ jQuery(document).ready(function ($) {
         // Añadir Ítem
         wrapper.on('click', '.add-repeater-item', function () {
             const itemHtml = `
-                <li class="clach-repeater-item">
+                <li class="gob-repeater-item">
                     <label class="field-label">Texto del Enlace</label>
                     <input type="text" class="title-field">
                     
@@ -56,19 +55,19 @@ jQuery(document).ready(function ($) {
                     </div>
                 </li>`;
             
-            wrapper.find('.clach-repeater-list').append(itemHtml);
+            wrapper.find('.gob-repeater-list').append(itemHtml);
             updateField(wrapper);
         });
 
         // Eliminar Ítem
         wrapper.on('click', '.remove-item', function () {
-            $(this).closest('.clach-repeater-item').remove();
+            $(this).closest('.gob-repeater-item').remove();
             updateField(wrapper);
         });
 
         // Sincronizar Select con Input de texto
         wrapper.on('change', '.icon-select', function () {
-            $(this).closest('.clach-repeater-item').find('.icon-field').val($(this).val());
+            $(this).closest('.gob-repeater-item').find('.icon-field').val($(this).val());
             updateField(wrapper);
         });
 

@@ -15,16 +15,17 @@
     padding: 0 15px;
 }
 
-/* Estilo genérico del widget en home */
-.clach-widget.home-widget {
+/* CAMBIO: .clach-widget -> .gob-widget */
+.gob-widget.home-widget {
     margin-bottom: 40px;
     padding: 20px;
-    background: var(--bg-body); /* Fondo gris suave para resaltar */
+    background: var(--bg-body); 
     border: 1px solid var(--border-color);
     border-radius: 4px;
 }
 
-.clach-widget.home-widget:last-child {
+/* CAMBIO: .clach-widget -> .gob-widget */
+.gob-widget.home-widget:last-child {
     margin-bottom: 0;
 }
 

@@ -1,11 +1,11 @@
 /* Estilos del Control Repetidor en WP Admin */
-.clach-repeater-list {
+.gob-repeater-list {
     margin: 15px 0 0 0;
     padding: 0;
     list-style: none;
 }
 
-.clach-repeater-item {
+.gob-repeater-item {
     background: #fff;
     border: 1px solid #dcdcdc;
     border-left: 4px solid #1A428A; /* Azul corporativo */
@@ -13,8 +13,8 @@
     margin-bottom: 10px;
 }
 
-.clach-repeater-item input,
-.clach-repeater-item select {
+.gob-repeater-item input,
+.gob-repeater-item select {
     width: 100%;
     margin-bottom: 8px;
     display: block;
