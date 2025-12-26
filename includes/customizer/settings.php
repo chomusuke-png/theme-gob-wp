@@ -122,8 +122,9 @@ function gob_customize_register($wp_customize)
 
     $header_colors = [
         'header_bg'       => ['label' => 'Fondo Cabecera', 'default' => '#1A428A'],
+        'branding_color'  => ['label' => 'Texto Branding', 'default' => '#FFFFFF'],
         'nav_link'        => ['label' => 'Color Enlace Menú', 'default' => '#FFFFFF'],
-        'nav_link_hover'  => ['label' => 'Fondo Hover Menú', 'default' => 'rgba(255,255,255,0.1)', 'alpha' => true],
+        'nav_link_hover'  => ['label' => 'Fondo Hover Menú', 'default' => '#EEEEEE', 'alpha' => true],
     ];
 
     foreach ($header_colors as $id => $props) {
@@ -135,7 +136,7 @@ function gob_customize_register($wp_customize)
     $submenu_colors = [
         'sub_bg'       => ['label' => 'Fondo Submenú', 'default' => '#1A428A'],
         'sub_text'     => ['label' => 'Texto Submenú', 'default' => '#FFFFFF'],
-        'sub_hover_bg' => ['label' => 'Fondo Hover Submenú', 'default' => 'rgba(255,255,255,0.15)', 'alpha' => true],
+        'sub_hover_bg' => ['label' => 'Fondo Hover Submenú', 'default' => '#EEEEEE', 'alpha' => true],
     ];
 
     foreach ($submenu_colors as $id => $props) {
@@ -158,7 +159,7 @@ function gob_customize_register($wp_customize)
         'toggle_icon' => ['label' => 'Icono Hamburguesa', 'default' => '#FFFFFF'],
         'menu_bg'     => ['label' => 'Fondo Menú Móvil', 'default' => '#1A428A'],
         'link_color'  => ['label' => 'Color Enlace Móvil', 'default' => '#FFFFFF'],
-        'border_color'=> ['label' => 'Separador Móvil', 'default' => 'rgba(255,255,255,0.1)'],
+        'border_color'=> ['label' => 'Separador Móvil', 'default' => '#EEEEEE'],
     ];
 
     foreach ($mobile_colors as $key => $args) {

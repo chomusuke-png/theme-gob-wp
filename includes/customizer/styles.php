@@ -15,6 +15,7 @@ function gob_customize_css() {
 
     // Header Main
     $h_bg = get_theme_mod('gob_header_header_bg', '#1A428A');
+    $h_branding = get_theme_mod('gob_header_branding_color', '#FFFFFF');
     $h_link = get_theme_mod('gob_header_nav_link', '#FFFFFF');
     $h_hover = get_theme_mod('gob_header_nav_link_hover', 'rgba(255,255,255,0.1)');
 
@@ -71,6 +72,10 @@ function gob_customize_css() {
 
         /* Header Main */
         .site-header .main-header { background-color: <?php echo esc_attr($h_bg); ?> !important; }
+        .branding-text .standard-version,
+        .branding-text .standard-desc {
+            color: <?php echo esc_attr($h_branding); ?> !important;
+        }
         .main-navigation li a { color: <?php echo esc_attr($h_link); ?> !important; }
         .main-navigation li a:hover { background-color: <?php echo esc_attr($h_hover); ?> !important; }
 
