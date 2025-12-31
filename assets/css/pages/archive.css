@@ -1,0 +1,128 @@
+/**
+ * Page: Archive & Search
+ * Estilos para listas de resultados (Búsqueda, Categorías, Tags)
+ */
+
+/* Cabecera de resultados */
+.search-query-highlight {
+    color: var(--color-secondary);
+    font-style: italic;
+}
+
+.search-meta {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 5px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+/* Lista de Entradas */
+.search-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.search-entry {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 4px;
+    transition: box-shadow 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.search-entry:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-left-color: var(--color-secondary);
+}
+
+.search-entry .entry-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+.search-entry .entry-title a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.search-entry .entry-title a:hover {
+    text-decoration: underline;
+}
+
+.search-entry .entry-meta {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.search-entry .entry-summary {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-read-more {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.btn-read-more:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.btn-read-more i {
+    margin-left: 5px;
+    font-size: 0.75rem;
+}
+
+/* Paginación */
+.pagination-wrapper {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.pagination .nav-links {
+    display: inline-flex;
+    gap: 5px;
+}
+
+.pagination .page-numbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 35px;
+    height: 35px;
+    padding: 0 10px;
+    border: 1px solid var(--border-color);
+    color: var(--color-primary);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.pagination .page-numbers.current,
+.pagination .page-numbers:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+.pagination .prev, 
+.pagination .next {
+    font-weight: bold;
+    padding: 0 15px;
+}

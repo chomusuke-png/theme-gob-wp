@@ -74,10 +74,7 @@ function gob_scripts() {
     // Layouts
     wp_enqueue_style( 'gob-header', $uri . '/assets/css/layout/header.css', array('gob-global'), $theme_version );
     wp_enqueue_style( 'gob-footer', $uri . '/assets/css/layout/footer.css', array('gob-global'), $theme_version );
-    wp_enqueue_style( 'gob-page', $uri . '/assets/css/layout/page.css', array('gob-global'), $theme_version );
-    if ( is_single() ) {
-        wp_enqueue_style( 'gob-single', $uri . '/assets/css/layout/single.css', array('gob-global'), $theme_version );
-    }
+    
 
     // Módulos
     wp_enqueue_style( 'gob-hero', $uri . '/assets/css/modules/hero.css', array('gob-global'), $theme_version );
@@ -86,6 +83,15 @@ function gob_scripts() {
     wp_enqueue_style( 'gob-back-to-top', $uri . '/assets/css/modules/back-to-top.css', array('gob-global'), $theme_version );
     if ( is_404() ) {
         wp_enqueue_style( 'gob-404', $uri . '/assets/css/modules/error-404.css', array('gob-global'), $theme_version );
+    }
+
+    // Pages
+    if ( is_search() || is_archive() ) {
+        wp_enqueue_style( 'gob-archive', $uri . '/assets/css/pages/archive.css', array('gob-global'), $theme_version );
+    }
+    wp_enqueue_style( 'gob-page', $uri . '/assets/css/pages/page.css', array('gob-global'), $theme_version );
+    if ( is_single() ) {
+        wp_enqueue_style( 'gob-single', $uri . '/assets/css/pages/single.css', array('gob-global'), $theme_version );
     }
 
     // Librerías Externas
@@ -104,3 +110,24 @@ add_action( 'wp_enqueue_scripts', 'gob_scripts' );
  * Customizer
  */
 require get_template_directory() . '/includes/customizer.php';
+
+function gob_add_search_to_menu($items, $args) {
+    if ($args->theme_location === 'menu-1') {
+        $search_item = '
+        <li class="menu-item search-trigger-item">
+            <a href="#" id="menu-search-btn" aria-label="Abrir buscador">
+                <i class="fas fa-search"></i>
+            </a>
+            <div class="header-search-dropdown" id="header-search-dropdown">
+                <form role="search" method="get" class="header-search-form" action="' . esc_url(home_url('/')) . '">
+                    <input type="search" class="search-field" placeholder="Buscar..." value="' . get_search_query() . '" name="s" />
+                    <button type="submit" class="search-submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </li>';
+        
+        return $items . $search_item;
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'gob_add_search_to_menu', 10, 2);

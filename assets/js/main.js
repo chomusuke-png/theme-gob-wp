@@ -44,4 +44,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // =============== SEARCHBAR (TOGGLE) ===============
+    const searchBtn = document.getElementById('menu-search-btn');
+    const searchDropdown = document.getElementById('header-search-dropdown');
+
+    if (searchBtn && searchDropdown) {
+        
+        // Toggle al hacer click en el icono
+        searchBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            searchDropdown.classList.toggle('active');
+            
+            // Auto-focus al input cuando se abre
+            if (searchDropdown.classList.contains('active')) {
+                const input = searchDropdown.querySelector('input');
+                if (input) setTimeout(() => input.focus(), 100);
+            }
+        });
+
+        // Cerrar si se hace click fuera del contenedor
+        document.addEventListener('click', function(e) {
+            if (!searchBtn.contains(e.target) && !searchDropdown.contains(e.target)) {
+                searchDropdown.classList.remove('active');
+            }
+        });
+    }
+
 });
