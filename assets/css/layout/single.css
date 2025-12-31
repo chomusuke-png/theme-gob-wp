@@ -1,0 +1,114 @@
+/**
+ * Layout: Single Post
+ * Estilos para la vista individual de entradas.
+ */
+
+/* Contenedor principal */
+.gov-single-article {
+    background-color: var(--bg-white);
+    padding: 60px 0;
+}
+
+/* Cabecera del Artículo */
+.entry-header {
+    margin-bottom: 40px;
+}
+
+.entry-title {
+    color: var(--color-primary);
+    font-size: 2rem; /* Un poco más grande que h2 estándar */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Metadatos (Fecha, Categoría) */
+.entry-meta {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.entry-meta i {
+    margin-right: 5px;
+    color: var(--color-secondary); /* Iconos en verde institucional */
+}
+
+.entry-meta a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.entry-meta a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* Separador visual simple */
+.entry-divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-secondary);
+    margin-top: 20px;
+}
+
+/* Contenido (hereda estilos base de page.css pero refinamos márgenes) */
+.entry-content {
+    margin-bottom: 60px;
+}
+
+/* Pie de Artículo / Navegación */
+.entry-footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 30px;
+    margin-top: 40px;
+}
+
+/* Navegación de Posts (Prev/Next) */
+.post-navigation .nav-links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.post-navigation .nav-previous,
+.post-navigation .nav-next {
+    max-width: 48%;
+}
+
+.post-navigation a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 15px;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color); /* Borde sutil estilo tarjeta plana */
+}
+
+.post-navigation a:hover {
+    border-color: var(--color-primary);
+    background-color: var(--bg-body);
+}
+
+.post-navigation .nav-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.post-navigation .nav-title {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 1rem;
+}

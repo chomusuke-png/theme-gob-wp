@@ -75,6 +75,9 @@ function gob_scripts() {
     wp_enqueue_style( 'gob-header', $uri . '/assets/css/layout/header.css', array('gob-global'), $theme_version );
     wp_enqueue_style( 'gob-footer', $uri . '/assets/css/layout/footer.css', array('gob-global'), $theme_version );
     wp_enqueue_style( 'gob-page', $uri . '/assets/css/layout/page.css', array('gob-global'), $theme_version );
+    if ( is_single() ) {
+        wp_enqueue_style( 'gob-single', $uri . '/assets/css/layout/single.css', array('gob-global'), $theme_version );
+    }
 
     // Módulos
     wp_enqueue_style( 'gob-hero', $uri . '/assets/css/modules/hero.css', array('gob-global'), $theme_version );
