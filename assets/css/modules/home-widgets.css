@@ -15,16 +15,18 @@
     padding: 0 15px;
 }
 
-/* CAMBIO: .clach-widget -> .gob-widget */
 .gob-widget.home-widget {
     margin-bottom: 40px;
     padding: 20px;
     background: var(--bg-body); 
     border: 1px solid var(--border-color);
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-/* CAMBIO: .clach-widget -> .gob-widget */
 .gob-widget.home-widget:last-child {
     margin-bottom: 0;
 }
@@ -40,4 +42,9 @@
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+.gob-widget.home-widget img {
+    max-width: 100%;
+    height: auto;
 }
