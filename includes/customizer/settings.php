@@ -159,6 +159,57 @@ function gob_customize_register($wp_customize)
         ],
     ]);
 
+    // ==============================================
+    // SECCIÓN: VIDEO DESTACADO
+    // ==============================================
+
+    $wp_customize->add_section('gob_video_section', [
+        'title'    => __('Portada: Video Destacado', 'gob'),
+        'priority' => 25, // Aparecerá debajo del Banner
+        'panel'    => 'gob_panel_general',
+    ]);
+
+    // Campo: Título de la Sección
+    $wp_customize->add_setting('gob_video_title', ['default' => '', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('gob_video_title', [
+        'label'   => __('Título del Video', 'gob'),
+        'section' => 'gob_video_section',
+        'type'    => 'text',
+    ]);
+
+    $wp_customize->add_setting('gob_video_id', [
+        'default' => '',
+        'sanitize_callback' => 'absint' // Sanitizamos como un ID numérico
+    ]);
+    
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'gob_video_id', [
+        'label'       => __('Subir Video (MP4)', 'gob'),
+        'description' => __('Sube un video directamente desde tu PC.', 'gob'),
+        'section'     => 'gob_video_section',
+        'mime_type'   => 'video', // Filtra solo videos en la biblioteca
+    ]));
+
+    // (Opcional) Puedes añadir una imagen de portada (Poster) para antes de dar play
+    $wp_customize->add_setting('gob_video_poster', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'gob_video_poster', [
+        'label'    => __('Imagen de Portada (Poster)', 'gob'),
+        'section'  => 'gob_video_section',
+    ]));
+
+    // Campo: Control de Ancho (Range)
+    $wp_customize->add_setting('gob_video_width', ['default' => '800', 'sanitize_callback' => 'absint']);
+    $wp_customize->add_control('gob_video_width', [
+        'label'       => __('Ancho Máximo (px)', 'gob'),
+        'description' => __('Ajusta qué tan grande se ve el video en pantalla.', 'gob'),
+        'section'     => 'gob_video_section',
+        'type'        => 'range',
+        'input_attrs' => [
+            'min'  => 300,
+            'max'  => 1200,
+            'step' => 50,
+        ],
+    ]);
+
 
     // ==============================================
     // PESTAÑA 2: COLORES DEL TEMA

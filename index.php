@@ -6,6 +6,8 @@ get_header();
 
     <?php get_template_part( 'template-parts/home', 'hero' ); ?>
 
+    <?php get_template_part('template-parts/home', 'video'); ?>
+
     <?php if ( is_active_sidebar( 'home-widgets' ) ) : ?>
         <section class="home-widgets-section">
             <div class="container">
