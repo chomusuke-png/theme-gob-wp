@@ -58,10 +58,8 @@
 .gov-btn {
     background-color: var(--color-primary);
     color: white;
-    border: none;
-    padding: 0 20px;
-    font-weight: bold;
-    font-size: 13px;
+    padding: 12px 20px;
+    font-size: 0.8rem;
     text-transform: uppercase;
     cursor: pointer;
     transition: background 0.2s;
