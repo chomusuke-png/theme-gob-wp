@@ -141,6 +141,24 @@ function gob_customize_register($wp_customize)
         'settings' => 'gob_hero_bg_image',
     ]));
 
+    // Altura del Banner (Padding)
+    $wp_customize->add_setting('gob_hero_height', [
+        'default' => 40,
+        'sanitize_callback' => 'absint'
+    ]);
+    
+    $wp_customize->add_control('gob_hero_height', [
+        'label'       => __('Altura del Banner (Relleno)', 'gob'),
+        'description' => __('Aumenta el espacio arriba y abajo para hacer la imagen más visible.', 'gob'),
+        'section'     => 'gob_hero_section',
+        'type'        => 'range',
+        'input_attrs' => [
+            'min'  => 40,
+            'max'  => 300,
+            'step' => 10,
+        ],
+    ]);
+
 
     // ==============================================
     // PESTAÑA 2: COLORES DEL TEMA

@@ -58,6 +58,8 @@ function gob_customize_css() {
     $btt_hover_bg = get_theme_mod('gob_backtotop_hover_bg', '#009B4D');
     $btt_hover_color = get_theme_mod('gob_backtotop_hover_color', '#FFFFFF');
 
+    $hero_pad = get_theme_mod('gob_hero_height', 40);
+
     ?>
     <style type="text/css" id="gob-customizer-css">
         :root {
@@ -110,6 +112,12 @@ function gob_customize_css() {
         .footer-links a, .footer-widget a { color: <?php echo esc_attr($f_link); ?> !important; }
         .footer-links a:hover, .footer-widget a:hover { color: <?php echo esc_attr($f_link_hover); ?> !important; }
         .footer-copy { color: <?php echo esc_attr($f_copy); ?> !important; }
+
+        /* Hero Section Dinámico */
+        .hero-gov-section {
+            padding-top: <?php echo intval($hero_pad); ?>px !important;
+            padding-bottom: <?php echo intval($hero_pad); ?>px !important;
+        }
 
         /* Home Widgets */
         .gob-widget.home-widget {
