@@ -9,8 +9,6 @@
 }
 
 .hero-gov-section .container {
-    /* max-width y margin se sobreescriben en styles.php dinámicamente, 
-       pero dejamos valores base por si acaso */
     max-width: 500px;
     margin: 0; 
     padding: 30px; /* Base padding */

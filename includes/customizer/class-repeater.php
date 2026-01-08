@@ -78,6 +78,57 @@ if (class_exists('WP_Customize_Control')) {
         }
     }
 }
+/**
+ * Control de Rango con Valor Visible (Slider + Texto)
+ */
+if (class_exists('WP_Customize_Control')) {
+    class Gob_Range_Control extends WP_Customize_Control {
+        public $type = 'gob_range';
+        public $suffix = ''; // Ejemplo: 'px', '%', etc.
+
+        public function render_content() {
+            // Obtener límites definidos o usar defaults
+            $min = isset($this->input_attrs['min']) ? $this->input_attrs['min'] : 0;
+            $max = isset($this->input_attrs['max']) ? $this->input_attrs['max'] : 100;
+            $step = isset($this->input_attrs['step']) ? $this->input_attrs['step'] : 1;
+            $value = $this->value();
+            ?>
+            <label>
+                <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                <?php if ( ! empty( $this->description ) ) : ?>
+                    <span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+                <?php endif; ?>
+                
+                <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px;">
+                    <input type="range" 
+                           <?php $this->link(); ?>
+                           value="<?php echo esc_attr( $value ); ?>" 
+                           min="<?php echo esc_attr( $min ); ?>"
+                           max="<?php echo esc_attr( $max ); ?>"
+                           step="<?php echo esc_attr( $step ); ?>"
+                           style="flex-grow: 1; cursor: pointer;"
+                           oninput="this.nextElementSibling.innerText = this.value + '<?php echo esc_js( $this->suffix ); ?>'"
+                    >
+                    
+                    <span style="
+                        font-weight: 600; 
+                        background: #f0f0f1; 
+                        padding: 4px 8px; 
+                        border-radius: 4px; 
+                        border: 1px solid #ccc;
+                        min-width: 50px;
+                        text-align: center;
+                        font-size: 11px;
+                        color: #333;
+                    ">
+                        <?php echo esc_html( $value ) . esc_html( $this->suffix ); ?>
+                    </span>
+                </div>
+            </label>
+            <?php
+        }
+    }
+}
 
 /**
  * Localización de Scripts (Pasar datos PHP a JS para el repetidor)

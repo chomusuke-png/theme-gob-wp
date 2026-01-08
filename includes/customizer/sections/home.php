@@ -80,9 +80,9 @@ function gob_customize_home_section($wp_customize) {
         ],
     ]);
 
-    // --- NUEVO: Configuración de la "Curva / Contenedor" ---
+    // --- Configuración de la "Curva / Contenedor" ---
     
-    // 1. Color de Fondo del Contenedor de Texto
+    // Color de Fondo del Contenedor de Texto
     $wp_customize->add_setting('gob_hero_text_bg_color', [
         'default' => 'rgba(255, 255, 255, 0.9)', // Blanco casi opaco por defecto
         'sanitize_callback' => 'sanitize_text_field' // Permitir rgba
@@ -93,39 +93,39 @@ function gob_customize_home_section($wp_customize) {
         'section'  => 'gob_hero_section',
     ]));
 
-    // 2. Radio de la Curva
+    // Radio de la Curva
     $wp_customize->add_setting('gob_hero_curve_radius', [
         'default' => 100,
         'sanitize_callback' => 'absint'
     ]);
-    $wp_customize->add_control('gob_hero_curve_radius', [
-        'label'       => __('Intensidad de la Curva (px)', 'gob'),
+    $wp_customize->add_control(new Gob_Range_Control($wp_customize, 'gob_hero_curve_radius', [
+        'label'       => __('Intensidad de la Curva', 'gob'),
         'section'     => 'gob_hero_section',
-        'type'        => 'range',
+        'suffix'      => 'px',
         'input_attrs' => [
-            'min'  => 0,   // 0 es cuadrado
-            'max'  => 250, // Muy redondo
+            'min'  => 0,
+            'max'  => 250,
             'step' => 10,
         ],
-    ]);
+    ]));
 
-    // NUEVO: Medidor de Opacidad para la Curva
+    // Medidor de Opacidad para la Curva
     $wp_customize->add_setting('gob_hero_curve_opacity', [
         'default' => 90, // 90% visible por defecto
         'sanitize_callback' => 'absint'
     ]);
     
-    $wp_customize->add_control('gob_hero_curve_opacity', [
-        'label'       => __('Opacidad de la Curva (%)', 'gob'),
+    $wp_customize->add_control(new Gob_Range_Control($wp_customize, 'gob_hero_curve_opacity', [
+        'label'       => __('Opacidad de la Curva', 'gob'),
         'description' => __('0% es invisible, 100% es color sólido.', 'gob'),
         'section'     => 'gob_hero_section',
-        'type'        => 'range',
+        'suffix'      => '%',
         'input_attrs' => [
             'min'  => 0,
             'max'  => 100,
             'step' => 1,
         ],
-    ]);
+    ]));
 
     // Imagen de Fondo
     $wp_customize->add_setting('gob_hero_bg_image', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
@@ -151,17 +151,17 @@ function gob_customize_home_section($wp_customize) {
         'default' => 0,
         'sanitize_callback' => 'absint'
     ]);
-    $wp_customize->add_control('gob_hero_overlay_opacity', [
-        'label'       => __('Nivel de Transparencia (0-100%)', 'gob'),
-        'description' => __('Aumenta este valor para que la imagen se vea más transparente (se mezcle con el color).', 'gob'),
+    $wp_customize->add_control(new Gob_Range_Control($wp_customize, 'gob_hero_overlay_opacity', [
+        'label'       => __('Nivel de Transparencia (Overlay)', 'gob'),
+        'description' => __('Aumenta este valor para oscurecer/aclarar la imagen.', 'gob'),
         'section'     => 'gob_hero_section',
-        'type'        => 'range',
+        'suffix'      => '%', // Icono de porcentaje
         'input_attrs' => [
             'min'  => 0,
-            'max'  => 95, // No dejamos 100 para no tapar la imagen totalmente
+            'max'  => 95,
             'step' => 5,
         ],
-    ]);
+    ]));
 
     // Control de Altura Mínima
     $wp_customize->add_setting('gob_hero_height', [
@@ -169,17 +169,17 @@ function gob_customize_home_section($wp_customize) {
         'sanitize_callback' => 'absint'
     ]);
     
-    $wp_customize->add_control('gob_hero_height', [
-        'label'       => __('Altura Mínima del Banner (px)', 'gob'),
-        'description' => __('Define el alto mínimo de la sección. El contenido se centrará automáticamente.', 'gob'),
+    $wp_customize->add_control(new Gob_Range_Control($wp_customize, 'gob_hero_height', [
+        'label'       => __('Altura Mínima del Banner', 'gob'),
+        'description' => __('Define el alto mínimo en píxeles.', 'gob'),
         'section'     => 'gob_hero_section',
-        'type'        => 'range',
+        'suffix'      => 'px', // Icono de pixeles
         'input_attrs' => [
             'min'  => 300,
             'max'  => 900,
             'step' => 10,
         ],
-    ]);
+    ]));
 
     // ==============================================
     // SECCIÓN: VIDEO DESTACADO
@@ -220,15 +220,15 @@ function gob_customize_home_section($wp_customize) {
 
     // Campo: Control de Ancho (Range)
     $wp_customize->add_setting('gob_video_width', ['default' => '800', 'sanitize_callback' => 'absint']);
-    $wp_customize->add_control('gob_video_width', [
-        'label'       => __('Ancho Máximo (px)', 'gob'),
-        'description' => __('Ajusta qué tan grande se ve el video en pantalla.', 'gob'),
+    $wp_customize->add_control(new Gob_Range_Control($wp_customize, 'gob_video_width', [
+        'label'       => __('Ancho Máximo del Video', 'gob'),
+        'description' => __('Ajusta qué tan grande se ve el video.', 'gob'),
         'section'     => 'gob_video_section',
-        'type'        => 'range',
+        'suffix'      => 'px',
         'input_attrs' => [
             'min'  => 300,
             'max'  => 1200,
             'step' => 50,
         ],
-    ]);
+    ]));
 }
