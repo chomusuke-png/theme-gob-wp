@@ -58,7 +58,16 @@ function gob_customize_css() {
     $btt_hover_bg = get_theme_mod('gob_backtotop_hover_bg', '#009B4D');
     $btt_hover_color = get_theme_mod('gob_backtotop_hover_color', '#FFFFFF');
 
-    $hero_pad = get_theme_mod('gob_hero_height', 40);
+    $hero_pad = get_theme_mod('gob_hero_height', 500); 
+    
+    // Nuevas variables de alineación
+    $hero_align_h = get_theme_mod('gob_hero_align_h', 'left');
+    $hero_align_v = get_theme_mod('gob_hero_align_v', 'center');
+
+    // Mapeo para 'align-items' (Flexbox usa flex-start/end, no left/right)
+    $flex_align_h = 'flex-start'; // Default izquierda
+    if ($hero_align_h === 'center') $flex_align_h = 'center';
+    if ($hero_align_h === 'right')  $flex_align_h = 'flex-end';
 
     ?>
     <style type="text/css" id="gob-customizer-css">
@@ -115,15 +124,24 @@ function gob_customize_css() {
 
         /* Hero Section Dinámico */
         .hero-gov-section {
-            /* 1. Fija el texto arriba (puedes ajustar el 60px a tu gusto) */
-            padding-top: 20px !important; 
-            
-            /* 2. El slider ahora solo estira el fondo hacia abajo */
-            padding-bottom: <?php echo intval($hero_pad * 1.5); ?>px !important; 
-            
-            /* 3. Asegura la alineación a la izquierda */
-            text-align: left !important; 
-            align-items: flex-start !important;
+            min-height: <?php echo intval($hero_pad); ?>px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            position: relative;
+            justify-content: <?php echo esc_attr($hero_align_v); ?> !important;
+            align-items: <?php echo esc_attr($flex_align_h); ?> !important;
+            text-align: <?php echo esc_attr($hero_align_h); ?> !important;
+            padding-top: 20px !important;
+            padding-bottom: 20px !important;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Ajuste para el contenedor interno */
+        .hero-gov-section .container {
+            width: 100%;
+            max-width: 500px; /* Ancho máximo para que el texto no se desparrame */
+            margin: 0 15px;   /* Margen seguro a los lados */
         }
 
         /* Home Widgets */

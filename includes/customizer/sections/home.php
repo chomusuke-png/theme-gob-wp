@@ -48,6 +48,38 @@ function gob_customize_home_section($wp_customize) {
         'type'    => 'url',
     ]);
 
+    // Alineación Horizontal (Izquierda, Centro, Derecha)
+    $wp_customize->add_setting('gob_hero_align_h', [
+        'default' => 'left',
+        'sanitize_callback' => 'sanitize_key', // 'left', 'center', 'right' son claves seguras
+    ]);
+    $wp_customize->add_control('gob_hero_align_h', [
+        'label'       => __('Alineación Horizontal', 'gob'),
+        'section'     => 'gob_hero_section',
+        'type'        => 'select',
+        'choices'     => [
+            'left'   => __('Izquierda', 'gob'),
+            'center' => __('Centro', 'gob'),
+            'right'  => __('Derecha', 'gob'),
+        ],
+    ]);
+
+    // Alineación Vertical (Arriba, Centro, Abajo)
+    $wp_customize->add_setting('gob_hero_align_v', [
+        'default' => 'center',
+        'sanitize_callback' => 'sanitize_key',
+    ]);
+    $wp_customize->add_control('gob_hero_align_v', [
+        'label'       => __('Alineación Vertical', 'gob'),
+        'section'     => 'gob_hero_section',
+        'type'        => 'select',
+        'choices'     => [
+            'flex-start' => __('Arriba', 'gob'),
+            'center'     => __('Centro', 'gob'),
+            'flex-end'   => __('Abajo', 'gob'),
+        ],
+    ]);
+
     // Imagen de Fondo
     $wp_customize->add_setting('gob_hero_bg_image', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'gob_hero_bg_image', [
@@ -84,20 +116,20 @@ function gob_customize_home_section($wp_customize) {
         ],
     ]);
 
-    // Altura del Banner (Padding)
+    // Control de Altura Mínima
     $wp_customize->add_setting('gob_hero_height', [
-        'default' => 40,
+        'default' => 500, // Un buen valor por defecto
         'sanitize_callback' => 'absint'
     ]);
     
     $wp_customize->add_control('gob_hero_height', [
-        'label'       => __('Altura del Banner (Relleno)', 'gob'),
-        'description' => __('Aumenta el espacio arriba y abajo para hacer la imagen más visible.', 'gob'),
+        'label'       => __('Altura Mínima del Banner (px)', 'gob'),
+        'description' => __('Define el alto mínimo de la sección. El contenido se centrará automáticamente.', 'gob'),
         'section'     => 'gob_hero_section',
         'type'        => 'range',
         'input_attrs' => [
-            'min'  => 40,
-            'max'  => 300,
+            'min'  => 300,
+            'max'  => 900,
             'step' => 10,
         ],
     ]);
