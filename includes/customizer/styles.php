@@ -115,8 +115,15 @@ function gob_customize_css() {
 
         /* Hero Section Dinámico */
         .hero-gov-section {
-            padding-top: <?php echo intval($hero_pad); ?>px !important;
-            padding-bottom: <?php echo intval($hero_pad); ?>px !important;
+            /* 1. Fija el texto arriba (puedes ajustar el 60px a tu gusto) */
+            padding-top: 20px !important; 
+            
+            /* 2. El slider ahora solo estira el fondo hacia abajo */
+            padding-bottom: <?php echo intval($hero_pad * 1.5); ?>px !important; 
+            
+            /* 3. Asegura la alineación a la izquierda */
+            text-align: left !important; 
+            align-items: flex-start !important;
         }
 
         /* Home Widgets */

@@ -6,24 +6,26 @@
     background-color: var(--bg-white);
     border-bottom: 1px solid var(--border-color);
     padding: 40px 0;
-    text-align: center;
+    text-align: left;
 }
 
 .hero-gov-section .container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 10px;
     padding: 0 15px;
 }
 
 .hero-title {
     color: var(--color-primary);
     margin-bottom: 10px;
-    font-size: 24px;
+    font-size: var(--font-size-title);
+    text-transform: uppercase;
+    font-weight: 1;
 }
 
 .hero-subtitle {
-    font-size: 14px;
-    color: var(--text-light);
+    font-size: var(--font-size-base);
+    color: var(--text-main);
     margin-bottom: 30px;
 }
 

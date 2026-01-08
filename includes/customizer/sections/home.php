@@ -56,6 +56,34 @@ function gob_customize_home_section($wp_customize) {
         'settings' => 'gob_hero_bg_image',
     ]));
 
+    // Color del Overlay (Capa transparente)
+    $wp_customize->add_setting('gob_hero_overlay_color', [
+        'default' => '#ffffff', // Blanco por defecto (para desvanecer)
+        'sanitize_callback' => 'sanitize_hex_color'
+    ]);
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'gob_hero_overlay_color', [
+        'label'    => __('Color de Capa (Overlay)', 'gob'),
+        'description' => __('Elige Blanco para aclarar la imagen o Negro para oscurecerla.', 'gob'),
+        'section'  => 'gob_hero_section',
+    ]));
+
+    // Opacidad del Overlay
+    $wp_customize->add_setting('gob_hero_overlay_opacity', [
+        'default' => 0,
+        'sanitize_callback' => 'absint'
+    ]);
+    $wp_customize->add_control('gob_hero_overlay_opacity', [
+        'label'       => __('Nivel de Transparencia (0-100%)', 'gob'),
+        'description' => __('Aumenta este valor para que la imagen se vea más transparente (se mezcle con el color).', 'gob'),
+        'section'     => 'gob_hero_section',
+        'type'        => 'range',
+        'input_attrs' => [
+            'min'  => 0,
+            'max'  => 95, // No dejamos 100 para no tapar la imagen totalmente
+            'step' => 5,
+        ],
+    ]);
+
     // Altura del Banner (Padding)
     $wp_customize->add_setting('gob_hero_height', [
         'default' => 40,
