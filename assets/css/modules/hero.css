@@ -5,18 +5,22 @@
 .hero-gov-section {
     background-color: var(--bg-white);
     border-bottom: 1px solid var(--border-color);
-    padding: 40px 0;
     text-align: left;
 }
 
 .hero-gov-section .container {
+    /* max-width y margin se sobreescriben en styles.php dinámicamente, 
+       pero dejamos valores base por si acaso */
     max-width: 500px;
-    margin: 0 10px;
-    padding: 0 15px;
+    margin: 0; 
+    padding: 30px; /* Base padding */
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease; /* Transición suave si cambias tamaño de pantalla */
 }
 
 .hero-title {
-    color: var(--color-primary);
+    color: white;
     margin-bottom: 10px;
     font-size: var(--font-size-title);
     text-transform: uppercase;
@@ -24,8 +28,8 @@
 }
 
 .hero-subtitle {
+    color: white;
     font-size: var(--font-size-base);
-    color: var(--text-main);
     margin-bottom: 30px;
 }
 

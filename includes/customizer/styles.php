@@ -59,15 +59,48 @@ function gob_customize_css() {
     $btt_hover_color = get_theme_mod('gob_backtotop_hover_color', '#FFFFFF');
 
     $hero_pad = get_theme_mod('gob_hero_height', 500); 
-    
-    // Nuevas variables de alineación
     $hero_align_h = get_theme_mod('gob_hero_align_h', 'left');
     $hero_align_v = get_theme_mod('gob_hero_align_v', 'center');
 
-    // Mapeo para 'align-items' (Flexbox usa flex-start/end, no left/right)
-    $flex_align_h = 'flex-start'; // Default izquierda
+    // --- LÓGICA DE LA CURVA Y TRANSPARENCIA ---
+    
+    // 1. Obtenemos el color base (Hexadecimal) y la opacidad (0-100)
+    $curve_hex = get_theme_mod('gob_hero_text_bg_color', '#ffffff');
+    $curve_opacity_val = get_theme_mod('gob_hero_curve_opacity', 90);
+
+    // 2. Convertir HEX a RGB para poder aplicar transparencia
+    $curve_hex = str_replace('#', '', $curve_hex);
+    if (strlen($curve_hex) == 3) {
+        $r = hexdec(substr($curve_hex,0,1).substr($curve_hex,0,1));
+        $g = hexdec(substr($curve_hex,1,1).substr($curve_hex,1,1));
+        $b = hexdec(substr($curve_hex,2,1).substr($curve_hex,2,1));
+    } else {
+        $r = hexdec(substr($curve_hex,0,2));
+        $g = hexdec(substr($curve_hex,2,2));
+        $b = hexdec(substr($curve_hex,4,2));
+    }
+
+    // 3. Crear el string RGBA final (Dividimos por 100 para obtener decimal 0.9, 0.5, etc.)
+    $curve_alpha = $curve_opacity_val / 100;
+    $curve_bg_rgba = "rgba($r, $g, $b, $curve_alpha)";
+
+    // --- LÓGICA DE BORDES (Igual que antes) ---
+    $curve_px = get_theme_mod('gob_hero_curve_radius', 100) . 'px';
+    $zero_px = '0px';
+
+    $tl = $curve_px; $tr = $curve_px; $br = $curve_px; $bl = $curve_px;
+
+    if ($hero_align_h === 'left') { $tl = $zero_px; $bl = $zero_px; }
+    if ($hero_align_h === 'right') { $tr = $zero_px; $br = $zero_px; }
+    if ($hero_align_v === 'flex-start') { $tl = $zero_px; $tr = $zero_px; }
+    if ($hero_align_v === 'flex-end') { $bl = $zero_px; $br = $zero_px; }
+
+    // Flexbox translation
+    $flex_align_h = 'flex-start';
     if ($hero_align_h === 'center') $flex_align_h = 'center';
     if ($hero_align_h === 'right')  $flex_align_h = 'flex-end';
+    
+    $final_radius = "$tl $tr $br $bl";
 
     ?>
     <style type="text/css" id="gob-customizer-css">
@@ -128,20 +161,32 @@ function gob_customize_css() {
             display: flex !important;
             flex-direction: column !important;
             position: relative;
-            justify-content: <?php echo esc_attr($hero_align_v); ?> !important;
+            
+            /* Alineación Vertical del contenedor */
+            justify-content: <?php echo esc_attr($hero_align_v); ?> !important; 
+            
+            /* Alineación Horizontal del contenedor (Items) */
             align-items: <?php echo esc_attr($flex_align_h); ?> !important;
+            
+            /* Alineación del texto interno */
             text-align: <?php echo esc_attr($hero_align_h); ?> !important;
-            padding-top: 20px !important;
-            padding-bottom: 20px !important;
+            
             background-size: cover;
             background-position: center;
         }
 
-        /* Ajuste para el contenedor interno */
+        /* Ajuste para el contenedor interno con CURVA */
         .hero-gov-section .container {
             width: 100%;
-            max-width: 500px; /* Ancho máximo para que el texto no se desparrame */
-            margin: 0 15px;   /* Margen seguro a los lados */
+            max-width: 600px; /* Un poco más ancho para dar aire */
+            margin: 0; /* Quitamos márgenes automáticos para que pueda tocar bordes */
+            
+            /* Estilos dinámicos inyectados */
+            border-radius: <?php echo esc_attr($final_radius); ?>;
+            background-color: <?php echo $curve_bg_rgba; ?>;
+            
+            /* Padding extra para que el texto no toque la curva */
+            padding: 40px; 
         }
 
         /* Home Widgets */

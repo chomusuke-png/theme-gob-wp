@@ -80,6 +80,53 @@ function gob_customize_home_section($wp_customize) {
         ],
     ]);
 
+    // --- NUEVO: Configuración de la "Curva / Contenedor" ---
+    
+    // 1. Color de Fondo del Contenedor de Texto
+    $wp_customize->add_setting('gob_hero_text_bg_color', [
+        'default' => 'rgba(255, 255, 255, 0.9)', // Blanco casi opaco por defecto
+        'sanitize_callback' => 'sanitize_text_field' // Permitir rgba
+    ]);
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'gob_hero_text_bg_color', [
+        'label'    => __('Color de Fondo del Texto', 'gob'),
+        'description' => __('Color de la curva que encierra el texto.', 'gob'),
+        'section'  => 'gob_hero_section',
+    ]));
+
+    // 2. Radio de la Curva
+    $wp_customize->add_setting('gob_hero_curve_radius', [
+        'default' => 100,
+        'sanitize_callback' => 'absint'
+    ]);
+    $wp_customize->add_control('gob_hero_curve_radius', [
+        'label'       => __('Intensidad de la Curva (px)', 'gob'),
+        'section'     => 'gob_hero_section',
+        'type'        => 'range',
+        'input_attrs' => [
+            'min'  => 0,   // 0 es cuadrado
+            'max'  => 250, // Muy redondo
+            'step' => 10,
+        ],
+    ]);
+
+    // NUEVO: Medidor de Opacidad para la Curva
+    $wp_customize->add_setting('gob_hero_curve_opacity', [
+        'default' => 90, // 90% visible por defecto
+        'sanitize_callback' => 'absint'
+    ]);
+    
+    $wp_customize->add_control('gob_hero_curve_opacity', [
+        'label'       => __('Opacidad de la Curva (%)', 'gob'),
+        'description' => __('0% es invisible, 100% es color sólido.', 'gob'),
+        'section'     => 'gob_hero_section',
+        'type'        => 'range',
+        'input_attrs' => [
+            'min'  => 0,
+            'max'  => 100,
+            'step' => 1,
+        ],
+    ]);
+
     // Imagen de Fondo
     $wp_customize->add_setting('gob_hero_bg_image', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'gob_hero_bg_image', [
