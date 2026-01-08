@@ -102,6 +102,30 @@ function gob_customize_css() {
     
     $final_radius = "$tl $tr $br $bl";
 
+    // --- LÓGICA DE PADDING DINÁMICO ---
+    $pad_std = 40; 
+    $pad_extra = 80; 
+
+    // Valores iniciales (Top, Right, Bottom, Left)
+    $pt = $pad_std . 'px'; 
+    $pr = $pad_std . 'px'; 
+    $pb = $pad_std . 'px'; 
+    $pl = $pad_std . 'px';
+
+    if ($hero_align_h === 'left') {
+        $pr = $pad_extra . 'px';
+    } 
+    elseif ($hero_align_h === 'right') {
+        $pl = $pad_extra . 'px';
+    } 
+    elseif ($hero_align_h === 'center') {
+        $pl = '60px';
+        $pr = '60px';
+    }
+
+    // Generamos la regla CSS final: top right bottom left
+    $final_padding = "$pt $pr $pb $pl";
+
     ?>
     <style type="text/css" id="gob-customizer-css">
         :root {
@@ -186,7 +210,7 @@ function gob_customize_css() {
             background-color: <?php echo $curve_bg_rgba; ?>;
             
             /* Padding extra para que el texto no toque la curva */
-            padding: 40px; 
+            padding: <?php echo esc_attr($final_padding); ?> !important;
         }
 
         /* Home Widgets */
