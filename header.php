@@ -4,7 +4,15 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <?php 
+    $meta_desc = get_theme_mod('gob_meta_description', ''); 
     
+    if ( ! empty( $meta_desc ) ) : ?>
+        <meta name="description" content="<?php echo esc_attr( $meta_desc ); ?>">
+    <?php endif; 
+    ?>
+
     <?php wp_head(); ?>
 </head>
 

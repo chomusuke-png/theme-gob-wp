@@ -61,6 +61,26 @@ function gob_customize_general_section($wp_customize) {
         'button_text'    => 'Añadir Enlace'
     ]));
 
+    // --- 1.4 SEO Básico ---
+    $wp_customize->add_section('gob_seo_section', [
+        'title'    => __('SEO y Metadatos', 'gob'),
+        'panel'    => 'gob_panel_general', // Lo ponemos en el panel General
+        'priority' => 40,
+    ]);
+
+    // Setting para la Meta Descripción
+    $wp_customize->add_setting('gob_meta_description', [
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field', // Limpia el texto
+    ]);
+
+    $wp_customize->add_control('gob_meta_description', [
+        'label'       => __('Meta Descripción (Google)', 'gob'),
+        'description' => __('Resumen corto (aprox. 150 caracteres) que aparecerá en los resultados de búsqueda.', 'gob'),
+        'section'     => 'gob_seo_section',
+        'type'        => 'textarea', // Usamos textarea para que sea cómodo escribir
+    ]);
+
     // Pasamos iconos a JS para el repetidor
     $wp_customize->gob_icons = $related_icons;
 }
