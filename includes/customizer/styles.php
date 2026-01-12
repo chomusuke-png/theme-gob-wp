@@ -202,14 +202,10 @@ function gob_customize_css() {
         /* Ajuste para el contenedor interno con CURVA */
         .hero-gov-section .container {
             width: 100%;
-            max-width: 600px; /* Un poco más ancho para dar aire */
-            margin: 0; /* Quitamos márgenes automáticos para que pueda tocar bordes */
-            
-            /* Estilos dinámicos inyectados */
+            max-width: 600px;
+            margin: 0;
             border-radius: <?php echo esc_attr($final_radius); ?>;
             background-color: <?php echo $curve_bg_rgba; ?>;
-            
-            /* Padding extra para que el texto no toque la curva */
             padding: <?php echo esc_attr($final_padding); ?> !important;
         }
 
@@ -257,6 +253,30 @@ function gob_customize_css() {
         #btnTop:hover {
             background-color: <?php echo esc_attr($btt_hover_bg); ?> !important;
             color: <?php echo esc_attr($btt_hover_color); ?> !important;
+        }
+
+        /* =========================================== *
+         *            MODO MÓVIL (Responsivo)          *
+         * =========================================== */
+        @media (max-width: 768px) {
+
+            .hero-gov-section {
+                padding: 0 !important; 
+                align-items: stretch !important;
+                justify-content: center !important;
+            }
+
+            .hero-gov-section .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                border-radius: 0 !important; 
+                flex-grow: 1; 
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                box-shadow: none !important; 
+            }
         }
     </style>
     <?php

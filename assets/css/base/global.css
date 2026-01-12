@@ -25,7 +25,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Utilidad para botón "Ir arriba" si fuera necesario globalmente */
 button {
     cursor: pointer;
 }
