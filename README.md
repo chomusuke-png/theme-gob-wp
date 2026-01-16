@@ -2,6 +2,7 @@
 
 **Versión del Tema:** 1.7.10
 **Descripción:** Plantilla personalizable orientada a portales institucionales o corporativos con estética gubernamental.
+**Autor:** Zumito
 
 ## Introducción
 Bienvenido a la documentación de **GobStyleTheme**. Este tema ha sido diseñado para ofrecer una apariencia limpia, institucional y altamente personalizable a través del "Personalizador" nativo de WordPress. No se requieren conocimientos de código para ajustar colores, textos o estructuras principales.
