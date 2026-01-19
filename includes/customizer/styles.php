@@ -62,13 +62,10 @@ function gob_customize_css() {
     $hero_align_h = get_theme_mod('gob_hero_align_h', 'left');
     $hero_align_v = get_theme_mod('gob_hero_align_v', 'center');
 
-    // --- LÓGICA DE LA CURVA Y TRANSPARENCIA ---
-    
-    // 1. Obtenemos el color base (Hexadecimal) y la opacidad (0-100)
+    // LÓGICA DE LA CURVA Y TRANSPARENCIA
     $curve_hex = get_theme_mod('gob_hero_text_bg_color', '#ffffff');
     $curve_opacity_val = get_theme_mod('gob_hero_curve_opacity', 90);
 
-    // 2. Convertir HEX a RGB para poder aplicar transparencia
     $curve_hex = str_replace('#', '', $curve_hex);
     if (strlen($curve_hex) == 3) {
         $r = hexdec(substr($curve_hex,0,1).substr($curve_hex,0,1));
@@ -80,11 +77,10 @@ function gob_customize_css() {
         $b = hexdec(substr($curve_hex,4,2));
     }
 
-    // 3. Crear el string RGBA final (Dividimos por 100 para obtener decimal 0.9, 0.5, etc.)
     $curve_alpha = $curve_opacity_val / 100;
     $curve_bg_rgba = "rgba($r, $g, $b, $curve_alpha)";
 
-    // --- LÓGICA DE BORDES (Igual que antes) ---
+    // LÓGICA DE BORDES
     $curve_px = get_theme_mod('gob_hero_curve_radius', 100) . 'px';
     $zero_px = '0px';
 
@@ -95,18 +91,16 @@ function gob_customize_css() {
     if ($hero_align_v === 'flex-start') { $tl = $zero_px; $tr = $zero_px; }
     if ($hero_align_v === 'flex-end') { $bl = $zero_px; $br = $zero_px; }
 
-    // Flexbox translation
     $flex_align_h = 'flex-start';
     if ($hero_align_h === 'center') $flex_align_h = 'center';
     if ($hero_align_h === 'right')  $flex_align_h = 'flex-end';
     
     $final_radius = "$tl $tr $br $bl";
 
-    // --- LÓGICA DE PADDING DINÁMICO ---
+    // LÓGICA DE PADDING DINÁMICO
     $pad_std = 40; 
     $pad_extra = 80; 
 
-    // Valores iniciales (Top, Right, Bottom, Left)
     $pt = $pad_std . 'px'; 
     $pr = $pad_std . 'px'; 
     $pb = $pad_std . 'px'; 
@@ -123,7 +117,6 @@ function gob_customize_css() {
         $pr = '60px';
     }
 
-    // Generamos la regla CSS final: top right bottom left
     $final_padding = "$pt $pr $pb $pl";
 
     ?>
@@ -182,24 +175,20 @@ function gob_customize_css() {
         /* Hero Section Dinámico */
         .hero-gov-section {
             min-height: <?php echo intval($hero_pad); ?>px !important;
+            max-width: 1100px;
+            margin: 0 auto;
             display: flex !important;
             flex-direction: column !important;
             position: relative;
             
-            /* Alineación Vertical del contenedor */
             justify-content: <?php echo esc_attr($hero_align_v); ?> !important; 
-            
-            /* Alineación Horizontal del contenedor (Items) */
             align-items: <?php echo esc_attr($flex_align_h); ?> !important;
-            
-            /* Alineación del texto interno */
             text-align: <?php echo esc_attr($hero_align_h); ?> !important;
             
             background-size: cover;
             background-position: center;
         }
 
-        /* Ajuste para el contenedor interno con CURVA */
         .hero-gov-section .container {
             width: 100%;
             max-width: 600px;
@@ -255,9 +244,7 @@ function gob_customize_css() {
             color: <?php echo esc_attr($btt_hover_color); ?> !important;
         }
 
-        /* =========================================== *
-         *            MODO MÓVIL (Responsivo)          *
-         * =========================================== */
+        /* MODO MÓVIL (Responsivo) */
         @media (max-width: 768px) {
 
             .hero-gov-section {
@@ -276,6 +263,7 @@ function gob_customize_css() {
                 flex-direction: column;
                 justify-content: center;
                 box-shadow: none !important; 
+                padding: 20px !important; /* Fix para que el texto no toque los bordes */
             }
         }
     </style>

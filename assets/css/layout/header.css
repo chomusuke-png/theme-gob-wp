@@ -65,7 +65,7 @@
     color: var(--bg-white);
     padding: 15px 0;
     border-bottom: 4px solid var(--color-secondary);
-    position: relative; /* Asegura z-index correcto */
+    position: relative; 
     z-index: 1000;
 }
 
@@ -76,7 +76,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
-    flex-wrap: wrap; /* Permite wrap para el menú móvil */
+    flex-wrap: wrap; 
 }
 
 /* Branding & Logo */
@@ -84,11 +84,13 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    max-width: 80%; 
 }
 
 .gov-logo {
     height: 60px;
     width: auto;
+    max-width: 100%;
 }
 
 .branding-text {
@@ -107,7 +109,7 @@
     opacity: 0.9;
 }
 
-/* Menu Toggle (Botón Hamburguesa) - Oculto en escritorio */
+/* Menu Toggle (Botón Hamburguesa) */
 .menu-toggle {
     display: none;
     background: transparent;
@@ -123,7 +125,6 @@
    NAVEGACIÓN PRINCIPAL & DROPDOWNS
    ========================================= */
 
-/* Estilos Comunes */
 .main-navigation ul {
     list-style: none;
     margin: 0;
@@ -161,7 +162,6 @@
         border: 1px solid rgba(255,255,255,0.3);
     }
 
-    /* Flecha Dropdown Desktop */
     .main-navigation .menu-item-has-children > a::after {
         content: '\f0d7';
         font-family: "Font Awesome 6 Free";
@@ -176,7 +176,6 @@
         transform: rotate(180deg);
     }
 
-    /* Submenús Desktop */
     .main-navigation ul ul {
         display: none;
         position: absolute;
@@ -214,18 +213,43 @@
 
 /* --- ESTILOS MÓVIL (< 992px) --- */
 @media (max-width: 991px) {
+    
+    /* Top Bar Stack */
+    .top-bar .container {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+    
+    .top-links ul {
+        justify-content: center;
+    }
+
+    /* Branding Stack */
+    .gov-logo {
+        height: 45px; /* Logo más pequeño */
+    }
+    
+    .standard-version {
+        font-size: 13px;
+        line-height: 1.2;
+    }
+    
+    .standard-desc {
+        display: none; /* Ocultar bajada en móvil */
+    }
+
     .menu-toggle {
-        display: block; /* Mostrar botón */
+        display: block; 
     }
 
     .main-navigation {
-        display: none; /* Ocultar menú por defecto */
+        display: none; 
         width: 100%;
         margin-top: 15px;
         border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Clase que añade JS para mostrar menú */
     .main-navigation.toggled {
         display: block;
     }
@@ -242,14 +266,12 @@
     .main-navigation li a {
         padding: 15px 0;
         border-bottom: 1px solid rgba(255,255,255,0.1);
-        /* Colores inyectados por Customizer */
     }
 
-    /* Submenús en Móvil (Siempre expandidos o indentados) */
     .main-navigation ul ul {
         display: block;
-        padding-left: 20px; /* Indentación */
-        background-color: rgba(0,0,0,0.05); /* Ligeramente más oscuro para diferenciar */
+        padding-left: 20px; 
+        background-color: rgba(0,0,0,0.05); 
     }
 
     .main-navigation ul ul li a {
@@ -260,17 +282,15 @@
 }
 
 /* =========================================
-   ITEM DE BÚSQUEDA EN MENÚ (Header.css)
+   SEARCHBAR
    ========================================= */
 
-/* Posicionamiento relativo para contener el dropdown */
 .search-trigger-item {
     position: relative;
 }
 
-/* Dropdown de búsqueda (Oculto por defecto) */
 .header-search-dropdown {
-    display: none; /* Se activa con JS */
+    display: none; 
     position: absolute;
     top: 100%;
     right: 0;
@@ -282,12 +302,10 @@
     z-index: 10000;
 }
 
-/* Estado activo del dropdown */
 .header-search-dropdown.active {
     display: block;
 }
 
-/* Estilos del Formulario Interno */
 .header-search-form {
     display: flex;
     gap: 0;
@@ -317,9 +335,6 @@
     background-color: #007a3d;
 }
 
-/* RESPONSIVE: Ajustes para Móvil (< 992px)
-   Reutilizamos la lógica del menú móvil existente.
-*/
 @media (max-width: 991px) {
     .header-search-dropdown {
         position: static;
